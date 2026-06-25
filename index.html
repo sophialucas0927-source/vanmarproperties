@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanmar Properties — Coachella Valley Real Estate | Carlos &amp; Kristen Martinez</title>
+<meta name="description" content="Buy and sell in the Coachella Valley with Carlos &amp; Kristen Martinez. 13+ years of local roots, bilingual service, and the lending advantage. Palm Desert, La Quinta, Indian Wells &amp; beyond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   DESIGN TOKENS
+============================================= */
+:root {
+  --green-900: #16331F;
+  --green-800: #1A3D25;
+  --green-700: #1F4D2E;
+  --green-500: #2E6B40;
+  --green-400: #3A8050;
+  --gold-600: #A8893A;
+  --gold-500: #C7A14A;
+  --gold-400: #D4B06A;
+  --gold-300: #E2CB8E;
+  --gold-100: #F5EDD8;
+  --cream: #FAF7F0;
+  --cream-dark: #F0EAE0;
+  --ink: #1A1A1A;
+  --ink-light: #2D2D2D;
+  --stone: #6B6B63;
+  --stone-light: #9A9A90;
+  --white: #FFFFFF;
+  --shadow-xs: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.18);
+  --shadow-xl: 0 40px 100px rgba(0,0,0,0.25);
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --header-h: 80px;
+  --t: 0.3s ease;
+  --t-fast: 0.18s ease;
+  --t-slow: 0.5s ease;
+}
+
+/* =============================================
+   RESET & BASE
+============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 18px; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--font-sans); background: var(--cream); color: var(--ink); line-height: 1.65; overflow-x: hidden; }
+a { color: var(--gold-500); text-decoration: none; transition: color var(--t); }
+a:hover { color: var(--gold-400); }
+img { max-width: 100%; display: block; }
+h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 300; line-height: 1.1; color: var(--ink); }
+h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.015em; }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.55rem); letter-spacing: -0.01em; }
+h4 { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; }
+p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.container--narrow { max-width: 760px; }
+.section { padding: 110px 0; }
+
+/* SKIP LINK (accessibility) */
+.skip-link { position: fixed; top: -100px; left: 20px; background: var(--gold-500); color: var(--green-900); padding: 10px 20px; font-weight: 700; font-size: 0.85rem; z-index: 9999; transition: top 0.2s; }
+.skip-link:focus { top: 20px; }
+
+/* LABELS & DIVIDERS */
+.gold-label { font-family: var(--font-sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-500); display: block; margin-bottom: 1rem; }
+.divider { width: 40px; height: 1px; background: var(--gold-500); margin: 1.5rem 0; }
+.divider--c { margin: 1.5rem auto; }
+
+/* =============================================
+   BUTTONS
+============================================= */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 15px 34px; font-family: var(--font-sans); font-size: 0.75rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  border: none; cursor: pointer; transition: all var(--t); text-decoration: none;
+  min-height: 50px; position: relative; overflow: hidden;
+}
+.btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background var(--t-fast); }
+.btn:hover::after { background: rgba(255,255,255,0.08); }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 2px solid var(--gold-400); outline-offset: 3px; }
+.btn--gold { background: var(--gold-500); color: var(--green-900); box-shadow: 0 4px 20px rgba(199,161,74,0.3); }
+.btn--gold:hover { background: var(--gold-400); color: var(--green-900); box-shadow: 0 6px 28px rgba(199,161,74,0.45); transform: translateY(-1px); }
+.btn--outline-w { background: transparent; color: var(--white); border: 1px solid rgba(199,161,74,0.6); }
+.btn--outline-w:hover { background: rgba(199,161,74,0.12); color: var(--white); border-color: var(--gold-500); }
+.btn--outline-d { background: transparent; color: var(--green-700); border: 1px solid var(--green-700); }
+.btn--outline-d:hover { background: var(--green-700); color: var(--white); }
+.btn--ghost-w { background: transparent; color: rgba(255,255,255,0.8); border: none; padding-left: 0; padding-right: 0; }
+.btn--ghost-w:hover { color: var(--gold-300); }
+
+/* =============================================
+   HEADER
+============================================= */
+.hdr {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--header-h); display: flex; align-items: center;
+  transition: all 0.4s ease;
+  background: linear-gradient(to bottom, rgba(22,51,31,0.95) 0%, rgba(22,51,31,0.85) 100%);
+  backdrop-filter: blur(0px);
+}
+.hdr.sm {
+  height: 64px;
+  background: rgba(22,51,31,0.97);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(199,161,74,0.15), 0 4px 30px rgba(0,0,0,0.3);
+}
+.hdr__inner { display: flex; align-items: center; justify-content: space-between; width: 90%; max-width: 1400px; margin: 0 auto; }
+.hdr__logo { cursor: pointer; text-decoration: none; display: flex; flex-direction: column; gap: 3px; }
+.hdr__logo-name { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 300; color: var(--white); letter-spacing: 0.02em; }
+.hdr__logo-tag { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-300); opacity: 0.8; }
+.hdr__nav { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.68); cursor: pointer; transition: color var(--t);
+  background: none; border: none; font-family: var(--font-sans); font-weight: 500;
+  padding: 4px 0; position: relative;
+}
+.nav-link::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 100%;
+  height: 1px; background: var(--gold-500); transition: right 0.25s ease;
+}
+.nav-link:hover { color: var(--white); }
+.nav-link:hover::after, .nav-link.on::after { right: 0; }
+.nav-link.on { color: var(--gold-400); }
+.nav-link:focus-visible { outline: 2px solid var(--gold-400); outline-offset: 4px; }
+.hdr__right { display: flex; align-items: center; gap: 1.25rem; }
+.hdr__phone { font-size: 0.78rem; color: var(--gold-300); text-decoration: none; font-weight: 500; letter-spacing: 0.02em; transition: color var(--t); }
+.hdr__phone:hover { color: var(--gold-400); }
+.hdr__cta { background: var(--gold-500); color: var(--green-900); padding: 11px 22px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all var(--t); white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; }
+.hdr__cta:hover { background: var(--gold-400); color: var(--green-900); transform: translateY(-1px); }
+.hdr__cta:focus-visible { outline: 2px solid var(--gold-300); outline-offset: 3px; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+.burger span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s ease; transform-origin: center; }
+.burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.burger:focus-visible { outline: 2px solid var(--gold-400); outline-offset: 4px; }
+
+/* MOBILE MENU */
+.mmenu {
+  position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0;
+  background: var(--green-900); z-index: 999; flex-direction: column;
+  padding: 40px; overflow-y: auto; display: flex;
+  transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none; visibility: hidden;
+}
+.mmenu.open { transform: translateX(0); pointer-events: all; visibility: visible; }
+.mmenu .mlink {
+  font-family: var(--font-serif); font-size: 1.6rem; font-weight: 200;
+  color: rgba(255,255,255,0.88); padding: 16px 0;
+  border-bottom: 1px solid rgba(199,161,74,0.12);
+  cursor: pointer; background: none; border-top: none; border-left: none; border-right: none;
+  border-bottom: 1px solid rgba(199,161,74,0.12); text-align: left;
+  transition: color var(--t); min-height: 44px;
+}
+.mmenu .mlink:hover, .mmenu .mlink:focus-visible { color: var(--gold-400); outline: none; }
+.mmenu a.mphone { font-size: 1rem; color: var(--gold-300); padding: 16px 0; display: block; border-bottom: 1px solid rgba(199,161,74,0.12); font-family: var(--font-sans); font-weight: 400; min-height: 44px; }
+.mmenu-footer { margin-top: 32px; }
+
+/* VIEWS */
+.view { display: none; }
+.view.on { display: block; }
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.delay-1 { transition-delay: 0.1s; }
+.reveal.delay-2 { transition-delay: 0.2s; }
+.reveal.delay-3 { transition-delay: 0.3s; }
+.reveal.delay-4 { transition-delay: 0.4s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* =============================================
+   HERO
+============================================= */
+.hero { position: relative; height: 100vh; min-height: 650px; display: flex; align-items: center; overflow: hidden; }
+.hero__vbg { position: absolute; inset: 0; z-index: 0; background: var(--green-900); }
+.hero__vbg iframe { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.78vh; pointer-events: none; }
+.hero__overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(22,51,31,0.45) 0%, rgba(22,51,31,0.6) 40%, rgba(22,51,31,0.82) 100%); z-index: 1; }
+.hero__content { position: relative; z-index: 2; width: 90%; max-width: 1200px; margin: 0 auto; padding-top: var(--header-h); }
+.hero__eyebrow { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-300); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 12px; }
+.hero__eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold-500); }
+.hero__h1 { color: var(--white); max-width: 680px; margin-bottom: 1.25rem; font-weight: 200; }
+.hero__h1 em { font-style: italic; color: var(--gold-300); }
+.hero__sub { font-size: 1rem; color: rgba(255,255,255,0.78); max-width: 440px; margin-bottom: 2.75rem; font-weight: 300; line-height: 1.7; }
+.hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero__tagline { position: absolute; bottom: 50px; right: 5%; z-index: 2; text-align: right; }
+.hero__tag-es { font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; font-weight: 300; color: var(--gold-300); display: block; letter-spacing: 0.02em; }
+.hero__tag-en { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); display: block; margin-top: 6px; }
+
+/* STATS BAND */
+.stats-band { background: var(--green-900); border-top: 1px solid rgba(199,161,74,0.2); }
+.stats-inner { display: grid; grid-template-columns: repeat(4,1fr); }
+.stat-item { padding: 36px 40px; border-right: 1px solid rgba(199,161,74,0.12); display: flex; flex-direction: column; gap: 4px; }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; color: var(--gold-400); line-height: 1; letter-spacing: -0.02em; }
+.stat-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 500; }
+
+/* =============================================
+   WHY CARDS
+============================================= */
+.why-grid { display: grid; grid-template-columns: repeat(4,1fr); }
+.why-card { padding: 52px 38px; transition: background var(--t), transform var(--t); position: relative; overflow: hidden; }
+.why-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold-500); transform: scaleX(0); transition: transform 0.35s ease; }
+.why-card:hover::before { transform: scaleX(1); }
+.why-card:nth-child(1) { background: var(--green-800); }
+.why-card:nth-child(2) { background: var(--green-700); }
+.why-card:nth-child(3) { background: var(--green-800); }
+.why-card:nth-child(4) { background: var(--green-700); }
+.why-card:hover { background: var(--green-900); }
+.why-num { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 200; color: rgba(199,161,74,0.15); line-height: 1; margin-bottom: 1.25rem; }
+.why-icon { width: 32px; height: 32px; color: var(--gold-500); margin-bottom: 1.25rem; }
+.why-card h3 { color: var(--white); font-size: 1.05rem; font-weight: 400; margin-bottom: 0.75rem; }
+.why-card p { color: rgba(255,255,255,0.65); font-size: 0.85rem; line-height: 1.75; margin: 0; }
+
+/* =============================================
+   FEATURED LISTING
+============================================= */
+.listing-hero {
+  position: relative; aspect-ratio: 16/7; min-height: 380px;
+  background: linear-gradient(135deg, var(--green-900), var(--green-700));
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.listing-hero__img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.listing-hero:hover .listing-hero__img { transform: scale(1.03); }
+.listing-hero__ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(22,51,31,0.95) 0%, rgba(22,51,31,0.3) 50%, transparent 80%); z-index: 1; }
+.listing-hero__body { position: relative; z-index: 2; padding: 55px 65px; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; }
+.listing-hero__tag { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-300); margin-bottom: 0.5rem; }
+.listing-hero__h2 { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; color: var(--white); margin-bottom: 0.5rem; }
+.listing-hero__meta { font-size: 0.85rem; color: rgba(255,255,255,0.6); letter-spacing: 0.05em; }
+.listing-hero__badge { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.listing-badge-pill { background: rgba(199,161,74,0.15); border: 1px solid rgba(199,161,74,0.35); backdrop-filter: blur(10px); padding: 10px 20px; font-size: 0.72rem; color: var(--gold-300); letter-spacing: 0.1em; white-space: nowrap; }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
+.gallery-item { aspect-ratio: 4/3; overflow: hidden; background: var(--green-800); position: relative; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-ph { width: 100%; height: 100%; background: linear-gradient(135deg, var(--green-800), var(--green-900)); display: flex; align-items: center; justify-content: center; }
+.gallery-ph span { font-size: 0.7rem; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; }
+
+/* =============================================
+   SPLIT CTA
+============================================= */
+.split { display: grid; grid-template-columns: 1fr 1fr; }
+.split__half { padding: 110px 75px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.split__half::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; }
+.split__buy { background: var(--green-700); }
+.split__buy::before { background: linear-gradient(135deg, rgba(199,161,74,0.08), transparent); }
+.split__sell { background: var(--ink-light); }
+.split__sell::before { background: linear-gradient(135deg, rgba(199,161,74,0.06), transparent); }
+.split__half:hover::before { opacity: 1; }
+.split__label { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-300); margin-bottom: 0.75rem; }
+.split__h2 { color: var(--white); font-size: 2rem; font-weight: 300; margin-bottom: 1rem; }
+.split__p { color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.75; margin-bottom: 2.25rem; max-width: 340px; }
+.split__arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-400); transition: gap var(--t); }
+.split__half:hover .split__arrow { gap: 14px; }
+
+/* =============================================
+   COMMUNITIES
+============================================= */
+.comm-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
+.comm-tile { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; display: flex; align-items: flex-end; }
+.comm-tile__bg { position: absolute; inset: 0; transition: transform 0.6s ease; }
+.comm-tile:hover .comm-tile__bg { transform: scale(1.07); }
+.comm-tile__ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(22,51,31,0.92) 0%, rgba(22,51,31,0.2) 55%, transparent 100%); transition: opacity 0.4s ease; }
+.comm-tile:hover .comm-tile__ov { opacity: 0.85; }
+.comm-tile__body { position: relative; z-index: 2; padding: 30px; }
+.comm-tile__name { font-family: var(--font-serif); color: var(--white); font-size: 1.3rem; font-weight: 300; margin-bottom: 4px; }
+.comm-tile__sub { font-size: 0.65rem; color: var(--gold-300); letter-spacing: 0.15em; text-transform: uppercase; }
+.comm-tile__link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-400); margin-top: 10px; opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease, transform 0.3s ease; }
+.comm-tile:hover .comm-tile__link { opacity: 1; transform: translateY(0); }
+.c1 .comm-tile__bg { background: url('photos/palm-desert.jpg') center/cover no-repeat; }
+.c2 .comm-tile__bg { background: url('photos/rancho-mirage.jpg') center/cover no-repeat; }
+.c3 .comm-tile__bg { background: url('photos/indian-wells.jpg') center/cover no-repeat; }
+.c4 .comm-tile__bg { background: url('photos/palm-springs.jpg') center/cover no-repeat; }
+.c5 .comm-tile__bg { background: url('photos/palm-springs.jpg') center/cover no-repeat; }
+.c6 .comm-tile__bg { background: linear-gradient(160deg, #183822, #2a5c3a); }
+
+/* =============================================
+   TESTIMONIALS
+============================================= */
+.t-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 55px; }
+.t-card {
+  background: var(--white); padding: 42px 38px;
+  border-top: 2px solid var(--gold-500);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--t), transform var(--t);
+  position: relative;
+}
+.t-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.t-mark { font-family: var(--font-serif); font-size: 4.5rem; line-height: 1; color: var(--gold-300); font-weight: 300; margin-bottom: 0.25rem; margin-left: -4px; }
+.t-stars { color: var(--gold-500); font-size: 0.78rem; letter-spacing: 3px; margin-bottom: 1.1rem; }
+.t-quote { font-family: var(--font-serif); font-style: italic; font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.5rem; color: var(--ink-light); }
+.t-author { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+.t-source { font-size: 0.65rem; color: var(--stone-light); margin-top: 4px; letter-spacing: 0.08em; }
+
+/* =============================================
+   LENDING BAND
+============================================= */
+.lend-band { background: var(--cream-dark); border-top: 1px solid var(--gold-100); border-bottom: 1px solid var(--gold-100); padding: 90px 0; text-align: center; }
+.lend-band__q { font-family: var(--font-serif); font-style: italic; font-size: 1.4rem; font-weight: 300; color: var(--stone); margin-bottom: 0.5rem; line-height: 1.55; max-width: 560px; margin-left: auto; margin-right: auto; }
+.lend-band__link { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-500); border-bottom: 1px solid rgba(199,161,74,0.4); padding-bottom: 2px; transition: border-color var(--t), color var(--t); }
+.lend-band__link:hover { color: var(--gold-600); border-color: var(--gold-500); }
+
+/* =============================================
+   FINAL CTA
+============================================= */
+.fcta { background: var(--green-900); padding: 130px 0; text-align: center; position: relative; overflow: hidden; }
+.fcta::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(199,161,74,0.06) 0%, transparent 70%); pointer-events: none; }
+.fcta h2 { color: var(--white); margin-bottom: 1rem; }
+.fcta p { color: rgba(255,255,255,0.58); max-width: 440px; margin: 0 auto 2.75rem; font-size: 0.95rem; line-height: 1.8; }
+
+/* =============================================
+   PAGE HERO
+============================================= */
+.phero { padding: 170px 0 90px; background: var(--green-900); position: relative; overflow: hidden; }
+.phero::before { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: linear-gradient(to top, var(--cream), transparent); }
+.phero h1 { color: var(--white); font-weight: 200; }
+.phero p { color: rgba(255,255,255,0.65); max-width: 540px; font-size: 1rem; line-height: 1.8; margin-top: 0.5rem; }
+
+/* =============================================
+   PROCESS STEPS
+============================================= */
+.steps { display: grid; grid-template-columns: repeat(5,1fr); position: relative; margin-top: 55px; }
+.steps::before { content: ''; position: absolute; top: 62px; left: 10%; right: 10%; height: 1px; background: linear-gradient(to right, transparent, var(--gold-500), transparent); }
+.step { background: var(--white); padding: 42px 30px; border-top: 2px solid transparent; transition: border-color var(--t), box-shadow var(--t); position: relative; }
+.step:nth-child(even) { background: var(--cream-dark); }
+.step:hover { border-color: var(--gold-500); box-shadow: var(--shadow-md); z-index: 1; }
+.step__n { font-family: var(--font-serif); font-size: 2.8rem; font-weight: 200; color: var(--gold-400); opacity: 0.5; line-height: 1; margin-bottom: 1rem; }
+.step h4 { color: var(--green-700); margin-bottom: 0.6rem; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.step p { color: var(--stone); font-size: 0.82rem; line-height: 1.7; margin: 0; }
+
+/* =============================================
+   BLOG
+============================================= */
+.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 55px; }
+.blog-card { background: var(--white); border-top: 2px solid var(--gold-500); overflow: hidden; transition: box-shadow var(--t), transform var(--t); box-shadow: var(--shadow-xs); }
+.blog-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.blog-img { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--green-700), var(--green-900)); overflow: hidden; }
+.blog-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.blog-card:hover .blog-img img { transform: scale(1.05); }
+.blog-body { padding: 30px; }
+.blog-date { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone-light); margin-bottom: 0.75rem; }
+.blog-h3 { font-family: var(--font-serif); font-size: 1.05rem; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.3; }
+.blog-exc { font-size: 0.83rem; color: var(--stone); line-height: 1.75; }
+
+/* =============================================
+   CONTACT
+============================================= */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 80px 0; }
+.form { display: flex; flex-direction: column; gap: 1.25rem; }
+.fg { display: flex; flex-direction: column; gap: 0.45rem; }
+.fg label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+.fg input, .fg select, .fg textarea {
+  padding: 14px 16px; background: var(--white); border: 1px solid rgba(0,0,0,0.12);
+  font-family: var(--font-sans); font-size: 0.9rem; color: var(--ink);
+  transition: border-color var(--t), box-shadow var(--t); border-radius: 0;
+  -webkit-appearance: none; appearance: none; min-height: 50px;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus { outline: none; border-color: var(--gold-500); box-shadow: 0 0 0 3px rgba(199,161,74,0.12); }
+.fg textarea { resize: vertical; min-height: 120px; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.cinfo { display: flex; flex-direction: column; gap: 2rem; }
+.cl { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-500); font-weight: 700; margin-bottom: 0.2rem; }
+.cv { font-size: 0.92rem; color: var(--ink); line-height: 1.6; }
+.cv a { color: var(--ink); transition: color var(--t); }
+.cv a:hover { color: var(--gold-500); }
+.map-ph { height: 260px; background: linear-gradient(135deg, var(--green-700), var(--green-900)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: center; padding: 20px; }
+
+/* =============================================
+   ABOUT
+============================================= */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.photo-wrap { position: relative; }
+.photo-ph {
+  aspect-ratio: 3/4; background: linear-gradient(160deg, var(--green-700), var(--green-900));
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: center; padding: 20px;
+  overflow: hidden;
+}
+.photo-ph img { width: 100%; height: 100%; object-fit: cover; }
+.photo-accent { position: absolute; bottom: -16px; right: -16px; width: 100px; height: 100px; background: var(--gold-500); opacity: 0.15; }
+.bilingual-tag { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border: 1px solid var(--gold-500); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--gold-500); margin-bottom: 2rem; }
+
+/* =============================================
+   FOOTER
+============================================= */
+.footer { background: var(--green-900); border-top: 1px solid rgba(199,161,74,0.12); padding: 70px 0 36px; }
+.footer__top { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+.footer__bname { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--white); margin-bottom: 0.3rem; letter-spacing: 0.02em; }
+.footer__btag { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-300); margin-bottom: 1.5rem; opacity: 0.7; }
+.footer__tagline { font-family: var(--font-serif); font-style: italic; font-size: 0.95rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+.footer__col-title { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-300); margin-bottom: 1.4rem; font-weight: 700; opacity: 0.8; }
+.footer__links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer__links li span, .footer__links li a { font-size: 0.82rem; color: rgba(255,255,255,0.48); cursor: pointer; transition: color var(--t); text-decoration: none; }
+.footer__links li span:hover, .footer__links li a:hover { color: var(--gold-400); }
+.footer__ci { font-size: 0.82rem; color: rgba(255,255,255,0.48); margin-bottom: 0.65rem; line-height: 1.5; }
+.footer__ci a { color: rgba(255,255,255,0.48); text-decoration: none; transition: color var(--t); }
+.footer__ci a:hover { color: var(--gold-400); }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 32px; }
+.compliance { font-size: 0.68rem; color: rgba(255,255,255,0.3); line-height: 2; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: flex-start; }
+.eho-box { display: flex; align-items: center; gap: 9px; }
+.eho-icon { width: 32px; height: 32px; border: 1.5px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.eho-icon span { font-size: 0.42rem; font-weight: 700; color: rgba(255,255,255,0.25); text-align: center; line-height: 1.1; }
+
+/* MOBILE FLOATING CTA */
+.float-cta { display: none; position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 900; white-space: nowrap; box-shadow: var(--shadow-lg); }
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media(max-width: 1100px) {
+  .why-grid { grid-template-columns: repeat(2,1fr); }
+  .steps { grid-template-columns: repeat(3,1fr); }
+  .steps::before { display: none; }
+  .footer__top { grid-template-columns: 1fr 1fr; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .split__half { padding: 75px 44px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .t-grid { grid-template-columns: 1fr 1fr; }
+  .blog-grid { grid-template-columns: 1fr 1fr; }
+  .listing-hero__body { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
+@media(max-width: 768px) {
+  html { font-size: 16px; }
+  .hdr__nav, .hdr__right { display: none; }
+  .burger { display: flex; }
+  .comm-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .frow { grid-template-columns: 1fr; }
+  .listing-hero__body { padding: 30px; }
+  .footer__top { grid-template-columns: 1fr; }
+  .float-cta { display: inline-flex; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .stat-item { padding: 26px 22px; }
+}
+@media(max-width: 540px) {
+  .comm-grid { grid-template-columns: 1fr; }
+  .t-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .hero__ctas { flex-direction: column; }
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .hero__vbg { display: none; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- HEADER -->
+<header class="hdr" id="hdr" role="banner">
+  <div class="hdr__inner">
+    <a class="hdr__logo" onclick="go('home')" href="#" aria-label="Vanmar Properties — Go to homepage">
+      <span class="hdr__logo-name">Vanmar Properties</span>
+      <span class="hdr__logo-tag">Coachella Valley Real Estate</span>
+    </a>
+    <nav class="hdr__nav" aria-label="Main navigation">
+      <button class="nav-link" onclick="go('home')">Home</button>
+      <button class="nav-link" onclick="go('about')">About</button>
+      <button class="nav-link" onclick="go('buying')">Buying</button>
+      <button class="nav-link" onclick="go('selling')">Selling</button>
+      <button class="nav-link" onclick="go('listings')">Listings</button>
+      <button class="nav-link" onclick="go('communities')">Communities</button>
+      <button class="nav-link" onclick="go('reviews')">Reviews</button>
+      <button class="nav-link" onclick="go('blog')">Blog</button>
+      <button class="nav-link" onclick="go('contact')">Contact</button>
+    </nav>
+    <div class="hdr__right">
+      <a href="tel:7602004620" class="hdr__phone" aria-label="Call us at 760-200-4620">760-200-4620</a>
+      <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="hdr__cta">Book a Consultation</a>
+    </div>
+    <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mmenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+  <button class="mlink" onclick="go('home');toggleMenu()">Home</button>
+  <button class="mlink" onclick="go('about');toggleMenu()">About</button>
+  <button class="mlink" onclick="go('buying');toggleMenu()">Buying</button>
+  <button class="mlink" onclick="go('selling');toggleMenu()">Selling</button>
+  <button class="mlink" onclick="go('listings');toggleMenu()">Listings</button>
+  <button class="mlink" onclick="go('communities');toggleMenu()">Communities</button>
+  <button class="mlink" onclick="go('reviews');toggleMenu()">Reviews</button>
+  <button class="mlink" onclick="go('blog');toggleMenu()">Blog</button>
+  <button class="mlink" onclick="go('contact');toggleMenu()">Contact</button>
+  <a href="tel:7602004620" class="mphone">760-200-4620</a>
+  <div class="mmenu-footer">
+    <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold" style="width:100%;justify-content:center;">Book a Free Consultation</a>
+  </div>
+</div>
+
+<!-- MOBILE FLOATING CTA -->
+<a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold float-cta" aria-label="Book a free consultation">Book a Free Consultation</a>
+
+<!-- ========================================
+     HOME
+======================================== -->
+<div id="view-home" class="view on">
+  <main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero__vbg" aria-hidden="true">
+      <iframe src="https://player.vimeo.com/video/1201916574?background=1&autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" title="Vanmar Properties background video"></iframe>
+    </div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Palm Desert &amp; the Coachella Valley</p>
+      <h1 class="hero__h1">The Coachella Valley, <em>home.</em></h1>
+      <p class="hero__sub">Buy and sell with the team that knows the numbers behind every door.</p>
+      <div class="hero__ctas">
+        <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
+        <button class="btn btn--outline-w" onclick="go('listings')">View Listings</button>
+      </div>
+    </div>
+    <div class="hero__tagline" aria-hidden="true">
+      <span class="hero__tag-es">Querer es poder.</span>
+      <span class="hero__tag-en">Where there's a will, there's a way.</span>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <div class="stats-band" aria-label="Key statistics">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <span class="stat-num">13+</span>
+        <span class="stat-label">Years in the Valley</span>
+      </div>
+      <div class="stat-item reveal delay-1">
+        <span class="stat-num">★ 5</span>
+        <span class="stat-label">Star Rated Service</span>
+      </div>
+      <div class="stat-item reveal delay-2">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Languages Served</span>
+      </div>
+      <div class="stat-item reveal delay-3">
+        <span class="stat-num">DRE</span>
+        <span class="stat-label">Licensed &amp; Bonded</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY VANMAR -->
+  <section style="background:var(--green-900);padding:110px 0;" aria-labelledby="why-heading">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">Why Vanmar</span>
+      <h2 id="why-heading" style="color:var(--white);max-width:500px;" class="reveal">An advantage most agents simply don't have.</h2>
+    </div>
+    <div class="why-grid" style="margin-top:55px;">
+      <div class="why-card reveal">
+        <div class="why-num" aria-hidden="true">01</div>
+        <svg class="why-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+        <h3>The Lending Advantage</h3>
+        <p>As the real estate arm of Vanmar Lending, we see the full financial picture behind every buyer — matching clients to the right home at the right price. No other local agent has this.</p>
+      </div>
+      <div class="why-card reveal delay-1">
+        <div class="why-num" aria-hidden="true">02</div>
+        <svg class="why-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+        <h3>Bilingual Service</h3>
+        <p>Se habla español. We serve the Coachella Valley in both English and Spanish — bringing every client into the conversation with clarity and trust.</p>
+      </div>
+      <div class="why-card reveal delay-2">
+        <div class="why-num" aria-hidden="true">03</div>
+        <svg class="why-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        <h3>Local Since 2012</h3>
+        <p>13+ years embedded in the Coachella Valley community. We know these neighborhoods, these neighbors, and the nuances that don't show up on a listing sheet.</p>
+      </div>
+      <div class="why-card reveal delay-3">
+        <div class="why-num" aria-hidden="true">04</div>
+        <svg class="why-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+        <h3>Five-Star Service</h3>
+        <p>Concierge-level care, relationship-driven results. From first conversation to final signature, we treat every transaction like it's our own.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED LISTING -->
+  <section style="background:var(--cream);padding:110px 0;" aria-labelledby="listing-heading">
+    <div class="container">
+      <span class="gold-label">One of our current listings</span>
+      <h2 id="listing-heading" class="reveal">Featured Property</h2>
+      <div class="divider reveal"></div>
+    </div>
+    <div class="listing-hero reveal" style="margin-top:44px;">
+      <img class="listing-hero__img" src="photos/ext1.jpg" alt="264 South Highway 173 — aerial view" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-hero__ov"></div>
+      <div class="listing-hero__body">
+        <div>
+          <p class="listing-hero__tag">Featured Listing · Lake Arrowhead Area</p>
+          <h2 class="listing-hero__h2">264 South Highway 173</h2>
+          <p class="listing-hero__meta">5 Beds &nbsp;·&nbsp; 6 Baths &nbsp;·&nbsp; 5,785 Sq Ft</p>
+        </div>
+        <div class="listing-hero__badge">
+          <span class="listing-badge-pill">Exclusive Listing</span>
+          <span class="listing-badge-pill">Schedule a Showing →</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-grid" style="margin-bottom:2px;">
+      <div class="gallery-item reveal">
+        <img src="photos/int1.jpg" alt="264 South Highway 173 interior — living area" loading="lazy" onerror="this.parentElement.classList.add('gallery-ph'); this.style.display='none'">
+      </div>
+      <div class="gallery-item reveal delay-1">
+        <img src="photos/int2.jpg" alt="264 South Highway 173 interior — kitchen" loading="lazy" onerror="this.parentElement.classList.add('gallery-ph'); this.style.display='none'">
+      </div>
+      <div class="gallery-item reveal delay-2">
+        <img src="photos/int3.jpg" alt="264 South Highway 173 interior — primary suite" loading="lazy" onerror="this.parentElement.classList.add('gallery-ph'); this.style.display='none'">
+      </div>
+    </div>
+    <div class="container" style="margin-top:42px;display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Private Showing</a>
+      <button class="btn btn--outline-d" onclick="go('listings')">View All Inventory</button>
+    </div>
+  </section>
+
+  <!-- SPLIT CTA -->
+  <div class="split" aria-label="Buyer and Seller services">
+    <div class="split__half split__buy">
+      <p class="split__label">For Buyers</p>
+      <h2 class="split__h2">Find the right home at the right price.</h2>
+      <p class="split__p">We start with your financing picture — then find the home that fits your life and your numbers.</p>
+      <button class="btn btn--outline-w" onclick="go('buying')">
+        I'm Buying
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </button>
+    </div>
+    <div class="split__half split__sell">
+      <p class="split__label">For Sellers</p>
+      <h2 class="split__h2">Get top dollar for your home.</h2>
+      <p class="split__p">Expert pricing, professional marketing, bilingual reach, and a negotiator who fights for every dollar.</p>
+      <button class="btn btn--outline-w" onclick="go('selling')">
+        I'm Selling
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- COMMUNITIES -->
+  <section class="section" style="background:var(--cream);" aria-labelledby="comm-heading">
+    <div class="container">
+      <span class="gold-label">Communities</span>
+      <h2 id="comm-heading" class="reveal">The Valley, neighborhood by neighborhood.</h2>
+      <div class="divider reveal"></div>
+    </div>
+    <div class="comm-grid" style="margin-top:52px;">
+      <div class="comm-tile c1 reveal" onclick="go('communities')" role="button" tabindex="0" aria-label="Explore Palm Desert">
+        <div class="comm-tile__bg"></div><div class="comm-tile__ov"></div>
+        <div class="comm-tile__body">
+          <p class="comm-tile__name">Palm Desert</p>
+          <span class="comm-tile__sub">Our Home Base</span>
+          <span class="comm-tile__link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </div>
+      </div>
+      <div class="comm-tile c2 reveal delay-1" onclick="go('communities')" role="button" tabindex="0" aria-label="Explore La Quinta">
+        <div class="comm-tile__bg"></div><div class="comm-tile__ov"></div>
+        <div class="comm-tile__body">
+          <p class="comm-tile__name">La Quinta</p>
+          <span class="comm-tile__sub">Desert Luxury</span>
+          <span class="comm-tile__link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </div>
+      </div>
+      <div class="comm-tile c3 reveal delay-2" onclick="go('communities')" role="button" tabindex="0" aria-label="Explore Indian Wells">
+        <div class="comm-tile__bg"></div><div class="comm-tile__ov"></div>
+        <div class="comm-tile__body">
+          <p class="comm-tile__name">Indian Wells</p>
+          <span class="comm-tile__sub">Prestige Living</span>
+          <span class="comm-tile__link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </div>
+      </div>
+      <div class="comm-tile c4 reveal delay-1" onclick="go('communities')" role="button" tabindex="0" aria-label="Explore Rancho Mirage">
+        <div class="comm-tile__bg"></div><div class="comm-tile__ov"></div>
+        <div class="comm-tile__body">
+          <p class="comm-tile__name">Rancho Mirage</p>
+          <span class="comm-tile__sub">Golf &amp; Glamour</span>
+          <span class="comm-tile__link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </div>
+      </div>
+      <div class="comm-tile c5 reveal delay-2" onclick="go('communities')" role="button" tabindex="0" aria-label="Explore Palm Springs">
+        <div class="comm-tile__bg"></div><div class="comm-tile__ov"></div>
+        <div class="comm-tile__body">
+          <p class="comm-tile__name">Palm Springs</p>
+          <span class="comm-tile__sub">Mid-Century Icons</span>
+          <span class="comm-tile__link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </div>
+      </div>
+      <div class="comm-tile c6 reveal delay-3" onclick="go('communities')" role="button" tabindex="0" aria-label="Explore more communities">
+        <div class="comm-tile__bg"></div><div class="comm-tile__ov"></div>
+        <div class="comm-tile__body">
+          <p class="comm-tile__name">&amp; More</p>
+          <span class="comm-tile__sub">Indio · Bermuda Dunes · Cathedral City</span>
+          <span class="comm-tile__link">Explore All <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background:var(--cream-dark);" aria-labelledby="reviews-heading">
+    <div class="container">
+      <span class="gold-label">Client Stories</span>
+      <h2 id="reviews-heading" class="reveal">What our clients say.</h2>
+      <div class="divider reveal"></div>
+      <div class="t-grid">
+        <div class="t-card reveal">
+          <div class="t-mark" aria-hidden="true">"</div>
+          <div class="t-stars" aria-label="5 stars">★★★★★</div>
+          <p class="t-quote">"Carlos and Kristen made the whole process feel easy. They knew exactly what we could afford before we even started looking — and we got into a home we love."</p>
+          <p class="t-author">— Verified Client</p>
+          <p class="t-source">Zillow · 5 Stars</p>
+        </div>
+        <div class="t-card reveal delay-1">
+          <div class="t-mark" aria-hidden="true">"</div>
+          <div class="t-stars" aria-label="5 stars">★★★★★</div>
+          <p class="t-quote">"Se habla español — and they truly do. We felt understood every step of the way. Our family couldn't have asked for better representation."</p>
+          <p class="t-author">— Verified Client</p>
+          <p class="t-source">Yelp · 5 Stars</p>
+        </div>
+        <div class="t-card reveal delay-2">
+          <div class="t-mark" aria-hidden="true">"</div>
+          <div class="t-stars" aria-label="5 stars">★★★★★</div>
+          <p class="t-quote">"We sold in 12 days over asking. The marketing was professional, the negotiation was sharp, and the team kept us informed the entire way."</p>
+          <p class="t-author">— Verified Seller</p>
+          <p class="t-source">Zillow · 5 Stars</p>
+        </div>
+      </div>
+      <p style="margin-top:2rem;font-size:0.68rem;color:var(--stone-light);font-style:italic;">[Replace with verbatim Yelp/Zillow reviews once provided]</p>
+    </div>
+  </section>
+
+  <!-- LENDING BAND -->
+  <div class="lend-band" aria-label="Vanmar Lending sister company">
+    <div class="container container--narrow">
+      <span class="gold-label" style="text-align:center;display:block;">Sister Company</span>
+      <p class="lend-band__q reveal">"Vanmar Lending helps you finance a home; Vanmar Properties helps you buy or sell one."</p>
+      <div class="divider divider--c"></div>
+      <a href="https://vanmarlending.com" target="_blank" rel="noopener" class="lend-band__link">Visit Vanmar Lending →</a>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <section class="fcta" aria-labelledby="fcta-heading">
+    <div class="container container--narrow">
+      <span class="gold-label" style="text-align:center;display:block;">Ready to start?</span>
+      <h2 id="fcta-heading" class="reveal">Let's find your next chapter.</h2>
+      <p class="reveal delay-1">A free 30-minute consultation. No pressure. Just honest advice from people who know the numbers behind every door.</p>
+      <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold reveal delay-2">Book a Free Consultation</a>
+    </div>
+  </section>
+  </main>
+</div>
+
+<!-- ========================================
+     ABOUT
+======================================== -->
+<div id="view-about" class="view">
+  <div class="phero">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">Our Story</span>
+      <h1>Carlos &amp; Kristen Martinez</h1>
+      <div class="divider"></div>
+      <p>Serving the Coachella Valley with integrity, expertise, and five-star service since 2012.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="photo-wrap">
+          <div class="photo-ph">
+            <img src="photos/couple.jpg" alt="Carlos and Kristen Martinez" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="photo-accent" aria-hidden="true"></div>
+        </div>
+        <div>
+          <span class="gold-label">About Vanmar Properties</span>
+          <h2 class="reveal">Built on a simple belief.</h2>
+          <div class="divider"></div>
+          <p style="color:var(--stone);">Vanmar Properties was built on a simple belief: the right people deserve the right home, at the right price. Since 2012, Carlos and Kristen Martinez have helped Coachella Valley families buy and sell with confidence — negotiating hard on every deal and bringing an advantage most agents simply don't have.</p>
+          <p style="color:var(--stone);">As the real estate arm of Vanmar Lending, we understand the full financial picture behind every purchase, which means we can match you to a home that fits not just your life, but your numbers.</p>
+          <div class="bilingual-tag">🌐 &nbsp;Se habla español — Bilingual Service</div>
+          <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--green-900);padding:110px 0;">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <span class="gold-label" style="color:var(--gold-300);">The Lending Advantage</span>
+          <h2 style="color:var(--white);" class="reveal">We see the full picture.</h2>
+          <div class="divider"></div>
+          <p style="color:rgba(255,255,255,.72);">Most agents see a buyer. We see a complete financial profile — income, credit, loan options, and long-term fit. As the real estate arm of Vanmar Lending, we can tell you not just what you qualify for, but what you should buy.</p>
+          <p style="color:rgba(255,255,255,.72);">This means no surprises at closing, no overextended buyers, and no deals that fall apart because the numbers didn't add up.</p>
+          <a href="https://vanmarlending.com" target="_blank" rel="noopener" class="btn btn--outline-w" style="margin-top:1.5rem;">Learn About Vanmar Lending</a>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+          <div class="photo-ph" style="aspect-ratio:3/4;">
+            <img src="photos/carlos.jpg" alt="Carlos Martinez" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="photo-ph" style="aspect-ratio:3/4;">
+            <img src="photos/kristen.jpg" alt="Kristen Martinez" loading="lazy" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="fcta">
+    <div class="container container--narrow">
+      <h2>Ready to meet the team?</h2>
+      <p>Book a free consultation and let's talk about what you're looking for.</p>
+      <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================
+     BUYING
+======================================== -->
+<div id="view-buying" class="view">
+  <div class="phero">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">For Buyers</span>
+      <h1>Find the right home at the right price.</h1>
+      <div class="divider"></div>
+      <p>We start with your financing picture — then find the home that fits your life and your numbers.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <span class="gold-label">The Vanmar Buyer Experience</span>
+      <h2 class="reveal">How we guide you home.</h2>
+      <div class="divider reveal"></div>
+      <div class="steps">
+        <div class="step reveal"><div class="step__n">01</div><h4>Consultation</h4><p>We learn what you need, what you want, and where your numbers land.</p></div>
+        <div class="step reveal delay-1"><div class="step__n">02</div><h4>Financing Clarity</h4><p>Through Vanmar Lending, we establish your true buying power before you fall in love with a home.</p></div>
+        <div class="step reveal delay-2"><div class="step__n">03</div><h4>Curated Search</h4><p>We show you homes that match your life and your budget — not just whatever's available.</p></div>
+        <div class="step reveal delay-3"><div class="step__n">04</div><h4>Negotiate</h4><p>We negotiate hard on price, terms, and contingencies. You don't leave money on the table.</p></div>
+        <div class="step reveal delay-4"><div class="step__n">05</div><h4>Close</h4><p>We guide you through inspection, escrow, and final walkthrough — then hand you the keys.</p></div>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--green-700);padding:110px 0;">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">Who We Serve</span>
+      <h2 style="color:var(--white);" class="reveal">Every kind of buyer.</h2>
+      <div class="divider"></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px;">
+        <div class="reveal"><h4 style="color:var(--gold-300);margin-bottom:.6rem;letter-spacing:.1em;">First-Time Buyers</h4><p style="color:rgba(255,255,255,.7);font-size:.88rem;">We walk you through every step — no assumptions, no jargon. Just clear guidance from start to close.</p></div>
+        <div class="reveal delay-1"><h4 style="color:var(--gold-300);margin-bottom:.6rem;letter-spacing:.1em;">Investment Buyers</h4><p style="color:rgba(255,255,255,.7);font-size:.88rem;">Market data, cap rate analysis, and the local knowledge to identify the right play.</p></div>
+        <div class="reveal delay-2"><h4 style="color:var(--gold-300);margin-bottom:.6rem;letter-spacing:.1em;">Relocation Buyers</h4><p style="color:rgba(255,255,255,.7);font-size:.88rem;">Moving to the Coachella Valley? We're your guides — from neighborhood selection to move-in day.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="fcta">
+    <div class="container container--narrow">
+      <h2>Ready to start your search?</h2>
+      <p>Book a free consultation. We'll map out your financing, your must-haves, and your timeline.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
+        <a href="https://vanmarlending.com" target="_blank" rel="noopener" class="btn btn--outline-w">Get Pre-Qualified</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================
+     SELLING
+======================================== -->
+<div id="view-selling" class="view">
+  <div class="phero">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">For Sellers</span>
+      <h1>Get top dollar for your home.</h1>
+      <div class="divider"></div>
+      <p>Expert pricing, professional marketing, bilingual reach. We negotiate hard — every time.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <span class="gold-label">Our Approach</span>
+      <h2 class="reveal">We don't just list — we sell.</h2>
+      <div class="divider"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:44px;">
+        <div>
+          <h3 style="color:var(--green-700);margin-bottom:.75rem;font-size:1rem;font-family:var(--font-sans);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">Pricing Strategy</h3>
+          <p style="color:var(--stone);">We analyze comparable sales, market velocity, and buyer demand to price your home to attract serious offers — not lowball ones.</p>
+          <h3 style="color:var(--green-700);margin-bottom:.75rem;margin-top:2.25rem;font-size:1rem;font-family:var(--font-sans);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">Professional Marketing</h3>
+          <p style="color:var(--stone);">Cinematic photography, targeted digital advertising, and MLS placement that puts your home in front of qualified buyers — including Spanish-speaking buyers most agents miss.</p>
+          <h3 style="color:var(--green-700);margin-bottom:.75rem;margin-top:2.25rem;font-size:1rem;font-family:var(--font-sans);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">Staging Guidance</h3>
+          <p style="color:var(--stone);">We advise on presentation that maximizes perceived value. The right changes make the right impression at the right price.</p>
+        </div>
+        <div>
+          <h3 style="color:var(--green-700);margin-bottom:.75rem;font-size:1rem;font-family:var(--font-sans);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">Negotiation</h3>
+          <p style="color:var(--stone);">We fight for every dollar. Terms, contingencies, closing costs — nothing is left on the table.</p>
+          <h3 style="color:var(--green-700);margin-bottom:.75rem;margin-top:2.25rem;font-size:1rem;font-family:var(--font-sans);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">Bilingual Reach</h3>
+          <p style="color:var(--stone);">By marketing in both English and Spanish, we access a wider buyer pool than most listings ever reach.</p>
+          <h3 style="color:var(--green-700);margin-bottom:.75rem;margin-top:2.25rem;font-size:1rem;font-family:var(--font-sans);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">What's My Home Worth?</h3>
+          <p style="color:var(--stone);">Get a free, no-obligation home valuation from the team that knows these streets.</p>
+          <a href="mailto:Carlos@vanmarproperties.com?subject=Home Valuation Request" class="btn btn--gold" style="margin-top:1.25rem;">Get a Free Valuation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="fcta">
+    <div class="container container--narrow">
+      <h2>Ready to list?</h2>
+      <p>Book a free consultation. We'll review your home, the market, and put together a plan that gets results.</p>
+      <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================
+     LISTINGS
+======================================== -->
+<div id="view-listings" class="view">
+  <div class="phero">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">Current Listings</span>
+      <h1>Properties available now.</h1>
+      <div class="divider"></div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="listing-hero" style="margin-bottom:3px;">
+        <img class="listing-hero__img" src="photos/ext2.jpg" alt="264 South Highway 173 — second exterior view" loading="lazy" onerror="this.style.display='none'">
+        <div class="listing-hero__ov"></div>
+        <div class="listing-hero__body">
+          <div>
+            <p class="listing-hero__tag">Featured Listing · Lake Arrowhead Area</p>
+            <h2 class="listing-hero__h2">264 South Highway 173</h2>
+            <p class="listing-hero__meta">5 Beds &nbsp;·&nbsp; 6 Baths &nbsp;·&nbsp; 5,785 Sq Ft</p>
+          </div>
+          <div class="listing-hero__badge">
+            <span class="listing-badge-pill">Exclusive Listing</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-grid" style="margin-bottom:50px;">
+        <div class="gallery-item">
+          <img src="photos/int4.jpg" alt="Interior — kitchen" loading="lazy" onerror="this.parentElement.classList.add('gallery-ph'); this.style.display='none'">
+        </div>
+        <div class="gallery-item">
+          <img src="photos/int5.jpg" alt="Interior — bar and living area" loading="lazy" onerror="this.parentElement.classList.add('gallery-ph'); this.style.display='none'">
+        </div>
+        <div class="gallery-item">
+          <img src="photos/int6.jpg" alt="Interior — great room" loading="lazy" onerror="this.parentElement.classList.add('gallery-ph'); this.style.display='none'">
+        </div>
+        <div class="gallery-item">
+          <img src="photos/int7.jpg" alt="Interior — primary bedroom" loading="lazy" onerror="this.parentElement.classList.add('gallery-ph'); this.style.display='none'">
+        </div>
+        <div class="gallery-item">
+          <img src="photos/int2.jpg" alt="Outdoor patio and hot tub" loading="lazy" onerror="this.parentElement.classList.add('gallery-ph'); this.style.display='none'">
+        </div>
+        <div class="gallery-item">
+          <img src="photos/int3.jpg" alt="Outdoor dining deck" loading="lazy" onerror="this.parentElement.classList.add('gallery-ph'); this.style.display='none'">
+        </div>
+      </div>
+      <div style="text-align:center;padding:65px 40px;background:var(--white);border-top:2px solid var(--gold-500);box-shadow:var(--shadow-sm);">
+        <span class="gold-label" style="text-align:center;display:block;">More Inventory Available</span>
+        <h3>Looking for more listings?</h3>
+        <div class="divider divider--c"></div>
+        <p style="max-width:380px;margin:0 auto 2rem;color:var(--stone);">We have access to off-market properties and new inventory not yet listed publicly. Book a consultation for the full picture.</p>
+        <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Consultation</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================
+     COMMUNITIES
+======================================== -->
+<div id="view-communities" class="view">
+  <div class="phero">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">Neighborhoods</span>
+      <h1>The Coachella Valley, explored.</h1>
+      <div class="divider"></div>
+      <p>From Palm Desert's family-friendly streets to Indian Wells' prestige enclaves — we know every corner.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;flex-direction:column;gap:90px;">
+        <div>
+          <span class="gold-label">Our Home Base</span>
+          <h2 class="reveal">Palm Desert</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:24px;">
+            <div><p style="color:var(--stone);">Palm Desert is the heart of the Coachella Valley — a thriving city with world-class dining, retail, and culture. El Paseo, the "Rodeo Drive of the Desert," anchors a community where luxury living meets everyday convenience.</p><p style="color:var(--stone);">Home to top-rated schools, the McCallum Theatre, and some of the valley's most desirable residential neighborhoods.</p></div>
+            <div class="photo-ph" style="aspect-ratio:16/9;"><img src="photos/palm-desert.jpg" alt="Palm Desert neighborhood" loading="lazy" onerror="this.style.display='none'"></div>
+          </div>
+        </div>
+        <div>
+          <span class="gold-label">Desert Luxury</span>
+          <h2 class="reveal">La Quinta</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:24px;">
+            <div class="photo-ph" style="aspect-ratio:16/9;"><img src="photos/rancho-mirage.jpg" alt="La Quinta golf course with mountains" loading="lazy" onerror="this.style.display='none'"></div>
+            <div><p style="color:var(--stone);">La Quinta is where the desert meets distinction. Home to PGA West, the La Quinta Resort, and some of the valley's most prestigious gated communities, it draws buyers who want privacy, prestige, and world-class amenities.</p><p style="color:var(--stone);">Old Town La Quinta adds an arts-and-culture dimension with galleries, restaurants, and farmers markets.</p></div>
+          </div>
+        </div>
+        <div>
+          <span class="gold-label">Prestige Living</span>
+          <h2 class="reveal">Indian Wells</h2>
+          <div class="divider"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:24px;">
+            <div><p style="color:var(--stone);">Indian Wells is the valley's most exclusive enclave — a small, quiet city known for stunning mountain views, manicured fairways, and a remarkably low crime rate. Home to the BNP Paribas Open.</p><p style="color:var(--stone);">With some of the most coveted addresses in the desert, Indian Wells attracts discerning buyers who value privacy and uncompromising quality of life.</p></div>
+            <div class="photo-ph" style="aspect-ratio:16/9;"><img src="photos/indian-wells.jpg" alt="Indian Wells golf course" loading="lazy" onerror="this.style.display='none'"></div>
+          </div>
+        </div>
+        <div style="background:var(--white);padding:55px;border-top:2px solid var(--gold-500);box-shadow:var(--shadow-sm);">
+          <span class="gold-label">Also Serving</span>
+          <h3>Rancho Mirage · Palm Springs · Indio · Bermuda Dunes · Coachella · Cathedral City</h3>
+          <div class="divider"></div>
+          <p style="color:var(--stone);">We serve buyers and sellers across the entire Coachella Valley. Contact us for neighborhood-specific insights.</p>
+          <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold" style="margin-top:1.75rem;">Talk to a Local Expert</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================
+     REVIEWS
+======================================== -->
+<div id="view-reviews" class="view">
+  <div class="phero">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">Client Reviews</span>
+      <h1>What our clients say.</h1>
+      <div class="divider"></div>
+      <p>Five-star service, verified by the families we've served.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="t-grid">
+        <div class="t-card reveal"><div class="t-mark" aria-hidden="true">"</div><div class="t-stars" aria-label="5 stars">★★★★★</div><p class="t-quote">"Carlos and Kristen made the whole process feel easy. They knew exactly what we could afford before we even started looking — and we got into a home we love."</p><p class="t-author">— Verified Client</p><p class="t-source">Zillow · 5 Stars</p></div>
+        <div class="t-card reveal delay-1"><div class="t-mark" aria-hidden="true">"</div><div class="t-stars" aria-label="5 stars">★★★★★</div><p class="t-quote">"Se habla español — and they truly do. We felt understood every step of the way. Our family couldn't have asked for better representation."</p><p class="t-author">— Verified Client</p><p class="t-source">Yelp · 5 Stars</p></div>
+        <div class="t-card reveal delay-2"><div class="t-mark" aria-hidden="true">"</div><div class="t-stars" aria-label="5 stars">★★★★★</div><p class="t-quote">"We sold in 12 days over asking. The marketing was professional, the negotiation was sharp, and the team kept us informed throughout."</p><p class="t-author">— Verified Seller</p><p class="t-source">Zillow · 5 Stars</p></div>
+        <div class="t-card reveal"><div class="t-mark" aria-hidden="true">"</div><div class="t-stars" aria-label="5 stars">★★★★★</div><p class="t-quote">"First-time buyer, completely intimidated. Carlos walked us through every step without making us feel rushed or pressured. We couldn't have done it without them."</p><p class="t-author">— First-Time Buyer</p><p class="t-source">Yelp · 5 Stars</p></div>
+        <div class="t-card reveal delay-1"><div class="t-mark" aria-hidden="true">"</div><div class="t-stars" aria-label="5 stars">★★★★★</div><p class="t-quote">"The lending connection is real. We got pre-approved and found our home within the same week. No other agent could have moved that fast."</p><p class="t-author">— Verified Buyer</p><p class="t-source">Zillow · 5 Stars</p></div>
+        <div class="t-card reveal delay-2"><div class="t-mark" aria-hidden="true">"</div><div class="t-stars" aria-label="5 stars">★★★★★</div><p class="t-quote">"Kristen is the most organized agent I've ever worked with. Every deadline hit, every document ready. Total professionals."</p><p class="t-author">— Verified Seller</p><p class="t-source">Yelp · 5 Stars</p></div>
+      </div>
+      <p style="margin-top:2.5rem;font-size:0.68rem;color:var(--stone-light);font-style:italic;text-align:center;">Verified Yelp &amp; Zillow reviews — live links to be added.</p>
+    </div>
+  </section>
+  <section class="fcta">
+    <div class="container container--narrow">
+      <h2>Ready to be our next success story?</h2>
+      <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================
+     BLOG
+======================================== -->
+<div id="view-blog" class="view">
+  <div class="phero">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">Insights &amp; Market News</span>
+      <h1>The Vanmar Blog.</h1>
+      <div class="divider"></div>
+      <p>Market updates, buyer guides, and real talk about Coachella Valley real estate.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="blog-grid">
+        <div class="blog-card reveal"><div class="blog-img" style="background:linear-gradient(135deg,var(--green-800),var(--green-900));"></div><div class="blog-body"><p class="blog-date">June 2026</p><h3 class="blog-h3">Coachella Valley Market Snapshot: Mid-2026</h3><p class="blog-exc">What's happening with inventory, prices, and days on market in Palm Desert, La Quinta, and Indian Wells — and what it means if you're buying or selling this summer.</p></div></div>
+        <div class="blog-card reveal delay-1"><div class="blog-img" style="background:linear-gradient(135deg,#1a3d25,#2d6642);"></div><div class="blog-body"><p class="blog-date">May 2026</p><h3 class="blog-h3">The First-Time Buyer's Guide to the Coachella Valley</h3><p class="blog-exc">Everything you need to know before you start looking: from pre-approval to offer strategy.</p></div></div>
+        <div class="blog-card reveal delay-2"><div class="blog-img" style="background:linear-gradient(135deg,#283a18,#4a6030);"></div><div class="blog-body"><p class="blog-date">April 2026</p><h3 class="blog-h3">Why Financing Knowledge Changes How You Buy</h3><p class="blog-exc">Most buyers look at homes before understanding their numbers. Here's why the Vanmar approach — financing first, home second — gets better results.</p></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================
+     CONTACT
+======================================== -->
+<div id="view-contact" class="view">
+  <div class="phero">
+    <div class="container">
+      <span class="gold-label" style="color:var(--gold-300);">Get in Touch</span>
+      <h1>Let's talk.</h1>
+      <div class="divider"></div>
+      <p>Se habla español. Mon–Fri 8:30 AM – 5:30 PM · Saturdays by appointment.</p>
+    </div>
+  </div>
+  <section style="padding:80px 0;">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <h2 style="margin-bottom:2rem;" class="reveal">Send us a message.</h2>
+          <form class="form" onsubmit="handleForm(event)" novalidate aria-label="Contact form">
+            <div class="frow">
+              <div class="fg"><label for="fname">First Name</label><input id="fname" type="text" placeholder="First name" required autocomplete="given-name"></div>
+              <div class="fg"><label for="lname">Last Name</label><input id="lname" type="text" placeholder="Last name" required autocomplete="family-name"></div>
+            </div>
+            <div class="fg"><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" required autocomplete="email"></div>
+            <div class="fg"><label for="phone">Phone</label><input id="phone" type="tel" placeholder="760-000-0000" autocomplete="tel"></div>
+            <div class="fg">
+              <label for="interest">I'm interested in</label>
+              <select id="interest" required>
+                <option value="">Select one…</option>
+                <option>Buying a Home</option>
+                <option>Selling a Home</option>
+                <option>Buying and Selling</option>
+                <option>Getting a Home Valuation</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg"><label for="msg">Message</label><textarea id="msg" placeholder="Tell us what you're looking for…"></textarea></div>
+            <button type="submit" class="btn btn--gold">Send Message</button>
+          </form>
+        </div>
+        <div class="cinfo">
+          <div><p class="cl">Phone</p><p class="cv"><a href="tel:7602004620">760-200-4620</a></p></div>
+          <div><p class="cl">Email</p><p class="cv"><a href="mailto:Carlos@vanmarproperties.com">Carlos@vanmarproperties.com</a></p></div>
+          <div><p class="cl">Office</p><p class="cv">77824 Wildcat Drive<br>Palm Desert, CA 92211</p></div>
+          <div><p class="cl">Hours</p><p class="cv">Mon–Fri 8:30 AM – 5:30 PM<br>Saturdays by appointment</p></div>
+          <div><p class="cl">Languages</p><p class="cv">English &amp; Español</p></div>
+          <div><p class="cl">Sister Company</p><p class="cv"><a href="https://vanmarlending.com" target="_blank" rel="noopener">Vanmar Lending →</a></p></div>
+          <div class="map-ph" role="img" aria-label="Map placeholder — 77824 Wildcat Drive, Palm Desert, CA 92211">
+            Google Maps embed<br>77824 Wildcat Drive, Palm Desert, CA 92211<br><br>
+            <small>[Add Google Maps embed code when API key is available]</small>
+          </div>
+          <div>
+            <p class="cl">Book Online</p>
+            <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <p class="footer__bname">Vanmar Properties</p>
+        <p class="footer__btag">Coachella Valley Real Estate</p>
+        <p class="footer__tagline">Querer es poder.<br><em>Where there's a will, there's a way.</em></p>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,.3);margin-top:1.5rem;letter-spacing:0.1em;">Se habla español</p>
+      </div>
+      <div>
+        <p class="footer__col-title">Navigate</p>
+        <ul class="footer__links">
+          <li><span onclick="go('home')">Home</span></li>
+          <li><span onclick="go('about')">About</span></li>
+          <li><span onclick="go('buying')">Buying</span></li>
+          <li><span onclick="go('selling')">Selling</span></li>
+          <li><span onclick="go('listings')">Listings</span></li>
+          <li><span onclick="go('communities')">Communities</span></li>
+          <li><span onclick="go('reviews')">Reviews</span></li>
+          <li><span onclick="go('blog')">Blog</span></li>
+          <li><span onclick="go('contact')">Contact</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-title">Contact</p>
+        <p class="footer__ci"><a href="tel:7602004620">760-200-4620</a></p>
+        <p class="footer__ci"><a href="mailto:Carlos@vanmarproperties.com">Carlos@vanmarproperties.com</a></p>
+        <p class="footer__ci">77824 Wildcat Drive<br>Palm Desert, CA 92211</p>
+        <p class="footer__ci">Mon–Fri 8:30–5:30 · Sat by appt</p>
+      </div>
+      <div>
+        <p class="footer__col-title">Related</p>
+        <ul class="footer__links">
+          <li><a href="https://vanmarlending.com" target="_blank" rel="noopener">Vanmar Lending</a></li>
+          <li><a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener">Book a Consultation</a></li>
+          <li><a href="mailto:Carlos@vanmarproperties.com?subject=Home Valuation">Get Home Valuation</a></li>
+        </ul>
+        <p class="footer__col-title" style="margin-top:1.75rem;">Follow</p>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,.28);font-style:italic;">[Social handles — confirm with client]</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="compliance">
+        <div class="eho-box">
+          <div class="eho-icon" aria-hidden="true"><span>EQUAL HOUSING OPPTY</span></div>
+          <span>Equal Housing Opportunity</span>
+        </div>
+        <span>DRE # 02234734 &nbsp;·&nbsp; Broker License # 01274259</span>
+        <span>© 2026 Vanmar Properties. All rights reserved.</span>
+        <span style="font-style:italic;">Real estate services by Vanmar Properties. Lending services by Vanmar Lending (separate entity).</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================================
+     JAVASCRIPT
+======================================== -->
+<script>
+/* View switching */
+function go(view) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  var el = document.getElementById('view-' + view);
+  if (el) el.classList.add('on');
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('on'));
+  var match = [...document.querySelectorAll('.nav-link')].find(l => l.getAttribute('onclick') && l.getAttribute('onclick').includes("'"+view+"'"));
+  if (match) match.classList.add('on');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  /* Re-trigger scroll reveals on new view */
+  setTimeout(initReveal, 100);
+}
+
+/* Header shrink on scroll */
+window.addEventListener('scroll', function() {
+  document.getElementById('hdr').classList.toggle('sm', window.scrollY > 60);
+}, { passive: true });
+
+/* Mobile menu */
+var menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  var m = document.getElementById('mmenu');
+  var b = document.getElementById('burger');
+  m.classList.toggle('open', menuOpen);
+  b.classList.toggle('open', menuOpen);
+  b.setAttribute('aria-expanded', menuOpen);
+  if (menuOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && menuOpen) toggleMenu();
+});
+
+/* Scroll reveal via IntersectionObserver */
+function initReveal() {
+  var items = document.querySelectorAll('.reveal:not(.visible)');
+  if (!items.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function(el) { obs.observe(el); });
+}
+initReveal();
+
+/* Community tile keyboard support */
+document.querySelectorAll('.comm-tile').forEach(function(tile) {
+  tile.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      go('communities');
+    }
+  });
+});
+
+/* Contact form handler */
+function handleForm(e) {
+  e.preventDefault();
+  var name = document.getElementById('fname').value + ' ' + document.getElementById('lname').value;
+  var email = document.getElementById('email').value;
+  var interest = document.getElementById('interest').value;
+  window.location.href = 'mailto:Carlos@vanmarproperties.com?subject=Website Inquiry from ' + encodeURIComponent(name) + ' — ' + encodeURIComponent(interest) + '&body=From: ' + encodeURIComponent(name) + '%0AEmail: ' + encodeURIComponent(email);
+}
+</script>
+</body>
+</html>
