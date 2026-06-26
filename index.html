@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vanmar Properties — Coachella Valley Real Estate | Carlos &amp; Kristen Martinez</title>
 <meta name="description" content="Buy and sell in the Coachella Valley with Carlos &amp; Kristen Martinez. 13+ years of local roots, bilingual service, and the lending advantage. Palm Desert, La Quinta, Indian Wells &amp; beyond.">
+<link rel="canonical" href="https://vanmarproperties.com">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vanmarproperties.com">
+<meta property="og:title" content="Vanmar Properties — Coachella Valley Real Estate">
+<meta property="og:description" content="Buy and sell in the Coachella Valley with Carlos &amp; Kristen Martinez. Bilingual service, lending advantage, and 13+ years of local expertise.">
+<meta property="og:image" content="https://vanmarproperties.com/photos/hero-bg.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vanmar Properties — Coachella Valley Real Estate">
+<meta name="twitter:description" content="Buy and sell with the team that knows the numbers behind every door.">
+<meta name="twitter:image" content="https://vanmarproperties.com/photos/hero-bg.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -179,7 +189,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
    HERO
 ============================================= */
 .hero { position: relative; height: 100vh; min-height: 650px; display: flex; align-items: center; overflow: hidden; }
-.hero__vbg { position: absolute; inset: 0; z-index: 0; background: var(--green-900); }
+.hero__vbg { position: absolute; inset: 0; z-index: 0; background: var(--green-900) url('photos/hero-bg.jpg') center/cover no-repeat; }
 .hero__vbg iframe { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.78vh; pointer-events: none; }
 .hero__overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(22,51,31,0.45) 0%, rgba(22,51,31,0.6) 40%, rgba(22,51,31,0.82) 100%); z-index: 1; }
 .hero__content { position: relative; z-index: 2; width: 90%; max-width: 1200px; margin: 0 auto; padding-top: var(--header-h); }
@@ -277,6 +287,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 .comm-tile__sub { font-size: 0.65rem; color: var(--gold-300); letter-spacing: 0.15em; text-transform: uppercase; }
 .comm-tile__link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-400); margin-top: 10px; opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease, transform 0.3s ease; }
 .comm-tile:hover .comm-tile__link { opacity: 1; transform: translateY(0); }
+@media (hover: none) { .comm-tile__link { opacity: 1; transform: none; } }
 .c1 .comm-tile__bg { background: url('photos/palm-desert.jpg') center/cover no-repeat; }
 .c2 .comm-tile__bg { background: url('photos/la-quinta.jpg') center/cover no-repeat; }
 .c3 .comm-tile__bg { background: url('photos/indian-wells.jpg') center/cover no-repeat; }
@@ -457,9 +468,10 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
   .why-grid { grid-template-columns: 1fr; }
 }
 @media(prefers-reduced-motion: reduce) {
-  .hero__vbg { display: none; }
-  *, *::before, *::after { transition: none !important; animation: none !important; }
-  .reveal { opacity: 1; transform: none; }
+  .hero__vbg iframe { display: none; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .comm-tile__bg, .listing-hero__img, .blog-img img, .gallery-item img { transition: none !important; }
+  .btn { transition: background var(--t), color var(--t), border-color var(--t); }
 }
 </style>
 </head>
@@ -550,7 +562,10 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
         <span class="stat-label">Years in the Valley</span>
       </div>
       <div class="stat-item reveal delay-1">
-        <span class="stat-num">★ 5</span>
+        <span class="stat-num" style="display:flex;align-items:center;gap:6px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--gold-400)" stroke="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          5.0
+        </span>
         <span class="stat-label">Star Rated Service</span>
       </div>
       <div class="stat-item reveal delay-2">
@@ -800,7 +815,10 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <div class="divider"></div>
           <p style="color:var(--stone);">Vanmar Properties was built on a simple belief: the right people deserve the right home, at the right price. Since 2012, Carlos and Kristen Martinez have helped Coachella Valley families buy and sell with confidence — negotiating hard on every deal and bringing an advantage most agents simply don't have.</p>
           <p style="color:var(--stone);">As the real estate arm of Vanmar Lending, we understand the full financial picture behind every purchase, which means we can match you to a home that fits not just your life, but your numbers.</p>
-          <div class="bilingual-tag">🌐 &nbsp;Se habla español — Bilingual Service</div>
+          <div class="bilingual-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            Se habla español — Bilingual Service
+          </div>
           <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
         </div>
       </div>
@@ -1013,28 +1031,31 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:50px;" class="reveal">
-        <div style="background:var(--green-900);aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background:linear-gradient(160deg,var(--green-700),var(--green-900));opacity:0.9;"></div>
-          <div style="position:relative;z-index:1;">
+        <div style="aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;">
+          <img src="photos/land1.jpg" alt="Aerial view of desert land parcel in Coachella Valley" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,51,31,0.92) 0%,rgba(22,51,31,0.35) 60%,transparent 100%);z-index:1;"></div>
+          <div style="position:relative;z-index:2;">
             <p style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-300);margin-bottom:8px;">Residential</p>
             <p style="font-family:var(--font-serif);font-size:1.15rem;font-weight:200;color:var(--white);margin-bottom:6px;">Custom Home Sites</p>
-            <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);">Gated communities · Palm Desert · La Quinta</p>
+            <p style="font-size:0.75rem;color:rgba(255,255,255,0.65);">Gated communities · Palm Desert · La Quinta</p>
           </div>
         </div>
-        <div style="background:var(--green-900);aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background:linear-gradient(160deg,#283a18,#456030);opacity:0.9;"></div>
-          <div style="position:relative;z-index:1;">
+        <div style="aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;">
+          <img src="photos/land2.jpg" alt="Desert land lot with mountain backdrop in Coachella Valley" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,51,31,0.92) 0%,rgba(22,51,31,0.35) 60%,transparent 100%);z-index:1;"></div>
+          <div style="position:relative;z-index:2;">
             <p style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-300);margin-bottom:8px;">Investment</p>
             <p style="font-family:var(--font-serif);font-size:1.15rem;font-weight:200;color:var(--white);margin-bottom:6px;">Raw Acreage</p>
-            <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);">Highway corridors · Desert View · Indio</p>
+            <p style="font-size:0.75rem;color:rgba(255,255,255,0.65);">Highway corridors · Desert View · Indio</p>
           </div>
         </div>
-        <div style="background:var(--green-900);aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background:linear-gradient(160deg,#38281a,#5a4a2a);opacity:0.9;"></div>
-          <div style="position:relative;z-index:1;">
+        <div style="aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;">
+          <img src="photos/land3.jpg" alt="Panoramic aerial view of Coachella Valley land with mountain views" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,51,31,0.92) 0%,rgba(22,51,31,0.35) 60%,transparent 100%);z-index:1;"></div>
+          <div style="position:relative;z-index:2;">
             <p style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-300);margin-bottom:8px;">Prestige</p>
             <p style="font-family:var(--font-serif);font-size:1.15rem;font-weight:200;color:var(--white);margin-bottom:6px;">View Parcels</p>
-            <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);">Mountain views · Rancho Mirage · Indian Wells</p>
+            <p style="font-size:0.75rem;color:rgba(255,255,255,0.65);">Mountain views · Rancho Mirage · Indian Wells</p>
           </div>
         </div>
       </div>
@@ -1107,7 +1128,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <h2 class="reveal">La Quinta</h2>
           <div class="divider"></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:24px;">
-            <div class="photo-ph" style="aspect-ratio:16/9;"><img src="photos/rancho-mirage.jpg" alt="La Quinta golf course with mountains" loading="lazy" onerror="this.style.display='none'"></div>
+            <div class="photo-ph" style="aspect-ratio:16/9;"><img src="photos/la-quinta.jpg" alt="La Quinta golf course with mountains" loading="lazy" onerror="this.style.display='none'"></div>
             <div><p style="color:var(--stone);">La Quinta is where the desert meets distinction. Home to PGA West, the La Quinta Resort, and some of the valley's most prestigious gated communities, it draws buyers who want privacy, prestige, and world-class amenities.</p><p style="color:var(--stone);">Old Town La Quinta adds an arts-and-culture dimension with galleries, restaurants, and farmers markets.</p></div>
           </div>
         </div>
@@ -1207,14 +1228,14 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <h2 style="margin-bottom:2rem;" class="reveal">Send us a message.</h2>
           <form class="form" onsubmit="handleForm(event)" novalidate aria-label="Contact form">
             <div class="frow">
-              <div class="fg"><label for="fname">First Name</label><input id="fname" type="text" placeholder="First name" required autocomplete="given-name"></div>
-              <div class="fg"><label for="lname">Last Name</label><input id="lname" type="text" placeholder="Last name" required autocomplete="family-name"></div>
+              <div class="fg"><label for="fname">First Name <span aria-hidden="true" style="color:var(--gold-500);">*</span></label><input id="fname" type="text" placeholder="First name" required aria-required="true" autocomplete="given-name"></div>
+              <div class="fg"><label for="lname">Last Name <span aria-hidden="true" style="color:var(--gold-500);">*</span></label><input id="lname" type="text" placeholder="Last name" required aria-required="true" autocomplete="family-name"></div>
             </div>
-            <div class="fg"><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" required autocomplete="email"></div>
+            <div class="fg"><label for="email">Email <span aria-hidden="true" style="color:var(--gold-500);">*</span></label><input id="email" type="email" placeholder="you@example.com" required aria-required="true" autocomplete="email"></div>
             <div class="fg"><label for="phone">Phone</label><input id="phone" type="tel" placeholder="760-000-0000" autocomplete="tel"></div>
             <div class="fg">
-              <label for="interest">I'm interested in</label>
-              <select id="interest" required>
+              <label for="interest">I'm interested in <span aria-hidden="true" style="color:var(--gold-500);">*</span></label>
+              <select id="interest" required aria-required="true">
                 <option value="">Select one…</option>
                 <option>Buying a Home</option>
                 <option>Selling a Home</option>
@@ -1263,15 +1284,15 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div>
         <p class="footer__col-title">Navigate</p>
         <ul class="footer__links">
-          <li><span onclick="go('home')">Home</span></li>
-          <li><span onclick="go('about')">About</span></li>
-          <li><span onclick="go('buying')">Buying</span></li>
-          <li><span onclick="go('selling')">Selling</span></li>
-          <li><span onclick="go('listings')">Listings</span></li>
-          <li><span onclick="go('communities')">Communities</span></li>
-          <li><span onclick="go('reviews')">Reviews</span></li>
-          <li><span onclick="go('blog')">Blog</span></li>
-          <li><span onclick="go('contact')">Contact</span></li>
+          <li><button onclick="go('home')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Home</button></li>
+          <li><button onclick="go('about')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">About</button></li>
+          <li><button onclick="go('buying')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Buying</button></li>
+          <li><button onclick="go('selling')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Selling</button></li>
+          <li><button onclick="go('listings')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Listings</button></li>
+          <li><button onclick="go('communities')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Communities</button></li>
+          <li><button onclick="go('reviews')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Reviews</button></li>
+          <li><button onclick="go('blog')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Blog</button></li>
+          <li><button onclick="go('contact')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Contact</button></li>
         </ul>
       </div>
       <div>
