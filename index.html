@@ -6,7 +6,8 @@
 <title>Vanmar Properties — Coachella Valley Real Estate | Carlos &amp; Kristen Martinez</title>
 <meta name="description" content="Buy and sell in the Coachella Valley with Carlos &amp; Kristen Martinez. 13+ years of local roots, bilingual service, and the lending advantage. Palm Desert, La Quinta, Indian Wells &amp; beyond.">
 <link rel="canonical" href="https://vanmarproperties.com">
-<link rel="icon" href="photos/logo.svg" type="image/svg+xml">
+<link rel="icon" href="photos/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="photos/logo-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vanmarproperties.com">
 <meta property="og:title" content="Vanmar Properties — Coachella Valley Real Estate">
@@ -123,7 +124,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 }
 .hdr__inner { display: flex; align-items: center; justify-content: space-between; width: 90%; max-width: 1400px; margin: 0 auto; }
 .hdr__logo { cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-.hdr__logo-icon { width: 36px; height: 32px; flex-shrink: 0; }
+.hdr__logo-icon { width: 36px; height: 32px; flex-shrink: 0; object-fit: contain; }
 .hdr__logo-text { display: flex; flex-direction: column; gap: 2px; }
 .hdr__logo-name { font-family: var(--font-serif); font-size: 1rem; font-weight: 300; color: var(--white); letter-spacing: 0.02em; white-space: nowrap; }
 .hdr__logo-tag { font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-300); opacity: 0.8; white-space: nowrap; }
@@ -507,54 +508,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 <header class="hdr" id="hdr" role="banner">
   <div class="hdr__inner">
     <a class="hdr__logo" onclick="go('home')" href="#" aria-label="Vanmar Properties — Go to homepage">
-      <svg class="hdr__logo-icon" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="hgl" x1="0" y1="0" x2="50" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#D4B868"/>
-            <stop offset="55%" stop-color="#EDD890"/>
-            <stop offset="100%" stop-color="#B89040"/>
-          </linearGradient>
-          <linearGradient id="hgr" x1="50" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#9A7428"/>
-            <stop offset="45%" stop-color="#C09848"/>
-            <stop offset="100%" stop-color="#785018"/>
-          </linearGradient>
-          <linearGradient id="hgc" x1="0" y1="0" x2="0" y2="90" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#F0DC98"/>
-            <stop offset="100%" stop-color="#C8A050"/>
-          </linearGradient>
-        </defs>
-        <!-- V faces (drawn first, bars on top) -->
-        <polygon points="0,22 44,0 50,88"  fill="url(#hgl)"/>
-        <polygon points="44,0 56,0 50,88"  fill="url(#hgc)"/>
-        <polygon points="56,0 100,22 50,88" fill="url(#hgr)"/>
-        <!-- Green bars (#427938) — left side -->
-        <rect x="0"  y="2"  width="2.5" height="86" fill="#427938"/>
-        <rect x="4"  y="9"  width="2.5" height="79" fill="#427938"/>
-        <rect x="8"  y="17" width="2.5" height="71" fill="#427938"/>
-        <rect x="12" y="25" width="2.5" height="63" fill="#427938"/>
-        <rect x="16" y="33" width="2.5" height="55" fill="#427938"/>
-        <rect x="20" y="41" width="2.5" height="47" fill="#427938"/>
-        <rect x="24" y="49" width="2.5" height="39" fill="#427938"/>
-        <rect x="28" y="57" width="2.5" height="31" fill="#427938"/>
-        <rect x="32" y="64" width="2.5" height="24" fill="#427938"/>
-        <rect x="36" y="71" width="2.5" height="17" fill="#427938"/>
-        <rect x="40" y="77" width="2.5" height="11" fill="#427938"/>
-        <rect x="44" y="82" width="2.5" height="6"  fill="#427938"/>
-        <!-- Green bars — right side (mirror) -->
-        <rect x="97.5" y="2"  width="2.5" height="86" fill="#427938"/>
-        <rect x="93.5" y="9"  width="2.5" height="79" fill="#427938"/>
-        <rect x="89.5" y="17" width="2.5" height="71" fill="#427938"/>
-        <rect x="85.5" y="25" width="2.5" height="63" fill="#427938"/>
-        <rect x="81.5" y="33" width="2.5" height="55" fill="#427938"/>
-        <rect x="77.5" y="41" width="2.5" height="47" fill="#427938"/>
-        <rect x="73.5" y="49" width="2.5" height="39" fill="#427938"/>
-        <rect x="69.5" y="57" width="2.5" height="31" fill="#427938"/>
-        <rect x="65.5" y="64" width="2.5" height="24" fill="#427938"/>
-        <rect x="61.5" y="71" width="2.5" height="17" fill="#427938"/>
-        <rect x="57.5" y="77" width="2.5" height="11" fill="#427938"/>
-        <rect x="53.5" y="82" width="2.5" height="6"  fill="#427938"/>
-      </svg>
+      <img class="hdr__logo-icon" src="photos/logo-icon.png" alt="" aria-hidden="true">
       <span class="hdr__logo-text">
         <span class="hdr__logo-name">Vanmar Properties</span>
         <span class="hdr__logo-tag">Coachella Valley Real Estate</span>
