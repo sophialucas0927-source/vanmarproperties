@@ -123,11 +123,11 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 }
 .hdr__inner { display: flex; align-items: center; justify-content: space-between; width: 90%; max-width: 1400px; margin: 0 auto; }
 .hdr__logo { cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-.hdr__logo-icon { width: 40px; height: 36px; flex-shrink: 0; }
-.hdr__logo-text { display: flex; flex-direction: column; gap: 3px; }
-.hdr__logo-name { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 300; color: var(--white); letter-spacing: 0.02em; }
-.hdr__logo-tag { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-300); opacity: 0.8; }
-.hdr__nav { display: flex; align-items: center; gap: 2rem; }
+.hdr__logo-icon { width: 36px; height: 32px; flex-shrink: 0; }
+.hdr__logo-text { display: flex; flex-direction: column; gap: 2px; }
+.hdr__logo-name { font-family: var(--font-serif); font-size: 1rem; font-weight: 300; color: var(--white); letter-spacing: 0.02em; white-space: nowrap; }
+.hdr__logo-tag { font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-300); opacity: 0.8; white-space: nowrap; }
+.hdr__nav { display: flex; align-items: center; gap: 1.4rem; }
 .nav-link {
   font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
   color: rgba(255,255,255,0.68); cursor: pointer; transition: color var(--t);
@@ -507,33 +507,53 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 <header class="hdr" id="hdr" role="banner">
   <div class="hdr__inner">
     <a class="hdr__logo" onclick="go('home')" href="#" aria-label="Vanmar Properties — Go to homepage">
-      <svg class="hdr__logo-icon" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Left bars: 10 bars, bottom-aligned at y=88, outer=tall inner=short -->
-        <rect x="0"  y="2"  width="3" height="86" fill="#4A8C5C"/>
-        <rect x="5"  y="10" width="3" height="78" fill="#4A8C5C"/>
-        <rect x="10" y="18" width="3" height="70" fill="#4A8C5C"/>
-        <rect x="15" y="27" width="3" height="61" fill="#4A8C5C"/>
-        <rect x="20" y="36" width="3" height="52" fill="#4A8C5C"/>
-        <rect x="25" y="46" width="3" height="42" fill="#4A8C5C"/>
-        <rect x="30" y="56" width="3" height="32" fill="#4A8C5C"/>
-        <rect x="35" y="65" width="3" height="23" fill="#4A8C5C"/>
-        <rect x="40" y="73" width="3" height="15" fill="#4A8C5C"/>
-        <rect x="45" y="80" width="3" height="8"  fill="#4A8C5C"/>
-        <!-- Right bars: mirror -->
-        <rect x="97" y="2"  width="3" height="86" fill="#4A8C5C"/>
-        <rect x="92" y="10" width="3" height="78" fill="#4A8C5C"/>
-        <rect x="87" y="18" width="3" height="70" fill="#4A8C5C"/>
-        <rect x="82" y="27" width="3" height="61" fill="#4A8C5C"/>
-        <rect x="77" y="36" width="3" height="52" fill="#4A8C5C"/>
-        <rect x="72" y="46" width="3" height="42" fill="#4A8C5C"/>
-        <rect x="67" y="56" width="3" height="32" fill="#4A8C5C"/>
-        <rect x="62" y="65" width="3" height="23" fill="#4A8C5C"/>
-        <rect x="57" y="73" width="3" height="15" fill="#4A8C5C"/>
-        <rect x="52" y="80" width="3" height="8"  fill="#4A8C5C"/>
-        <!-- Gold V — left arm (lighter, outer starts midway down) -->
-        <polygon points="1,42 46,2 50,88" fill="#C9A24E"/>
-        <!-- Gold V — right arm (darker) -->
-        <polygon points="54,2 99,42 50,88" fill="#9A7428"/>
+      <svg class="hdr__logo-icon" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="hgl" x1="0" y1="0" x2="50" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#D4B868"/>
+            <stop offset="55%" stop-color="#EDD890"/>
+            <stop offset="100%" stop-color="#B89040"/>
+          </linearGradient>
+          <linearGradient id="hgr" x1="50" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#9A7428"/>
+            <stop offset="45%" stop-color="#C09848"/>
+            <stop offset="100%" stop-color="#785018"/>
+          </linearGradient>
+          <linearGradient id="hgc" x1="0" y1="0" x2="0" y2="90" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#F0DC98"/>
+            <stop offset="100%" stop-color="#C8A050"/>
+          </linearGradient>
+        </defs>
+        <!-- V faces (drawn first, bars on top) -->
+        <polygon points="0,22 44,0 50,88"  fill="url(#hgl)"/>
+        <polygon points="44,0 56,0 50,88"  fill="url(#hgc)"/>
+        <polygon points="56,0 100,22 50,88" fill="url(#hgr)"/>
+        <!-- Green bars (#427938) — left side -->
+        <rect x="0"  y="2"  width="2.5" height="86" fill="#427938"/>
+        <rect x="4"  y="9"  width="2.5" height="79" fill="#427938"/>
+        <rect x="8"  y="17" width="2.5" height="71" fill="#427938"/>
+        <rect x="12" y="25" width="2.5" height="63" fill="#427938"/>
+        <rect x="16" y="33" width="2.5" height="55" fill="#427938"/>
+        <rect x="20" y="41" width="2.5" height="47" fill="#427938"/>
+        <rect x="24" y="49" width="2.5" height="39" fill="#427938"/>
+        <rect x="28" y="57" width="2.5" height="31" fill="#427938"/>
+        <rect x="32" y="64" width="2.5" height="24" fill="#427938"/>
+        <rect x="36" y="71" width="2.5" height="17" fill="#427938"/>
+        <rect x="40" y="77" width="2.5" height="11" fill="#427938"/>
+        <rect x="44" y="82" width="2.5" height="6"  fill="#427938"/>
+        <!-- Green bars — right side (mirror) -->
+        <rect x="97.5" y="2"  width="2.5" height="86" fill="#427938"/>
+        <rect x="93.5" y="9"  width="2.5" height="79" fill="#427938"/>
+        <rect x="89.5" y="17" width="2.5" height="71" fill="#427938"/>
+        <rect x="85.5" y="25" width="2.5" height="63" fill="#427938"/>
+        <rect x="81.5" y="33" width="2.5" height="55" fill="#427938"/>
+        <rect x="77.5" y="41" width="2.5" height="47" fill="#427938"/>
+        <rect x="73.5" y="49" width="2.5" height="39" fill="#427938"/>
+        <rect x="69.5" y="57" width="2.5" height="31" fill="#427938"/>
+        <rect x="65.5" y="64" width="2.5" height="24" fill="#427938"/>
+        <rect x="61.5" y="71" width="2.5" height="17" fill="#427938"/>
+        <rect x="57.5" y="77" width="2.5" height="11" fill="#427938"/>
+        <rect x="53.5" y="82" width="2.5" height="6"  fill="#427938"/>
       </svg>
       <span class="hdr__logo-text">
         <span class="hdr__logo-name">Vanmar Properties</span>
