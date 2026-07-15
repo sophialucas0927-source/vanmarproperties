@@ -415,8 +415,8 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 .footer__tagline { font-family: var(--font-serif); font-style: italic; font-size: 0.95rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
 .footer__col-title { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-300); margin-bottom: 1.4rem; font-weight: 700; opacity: 0.8; }
 .footer__links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-.footer__links li span, .footer__links li a { font-size: 0.82rem; color: rgba(255,255,255,0.48); cursor: pointer; transition: color var(--t); text-decoration: none; }
-.footer__links li span:hover, .footer__links li a:hover { color: var(--gold-400); }
+.footer__links li span, .footer__links li a, .footer__links li button { font-size: 0.82rem; color: rgba(255,255,255,0.48); cursor: pointer; transition: color var(--t); text-decoration: none; background: none; border: none; padding: 0; margin: 0; font-family: inherit; text-align: left; }
+.footer__links li span:hover, .footer__links li a:hover, .footer__links li button:hover { color: var(--gold-400); }
 .footer__ci { font-size: 0.82rem; color: rgba(255,255,255,0.48); margin-bottom: 0.65rem; line-height: 1.5; }
 .footer__ci a { color: rgba(255,255,255,0.48); text-decoration: none; transition: color var(--t); }
 .footer__ci a:hover { color: var(--gold-400); }
@@ -968,7 +968,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <p style="color:var(--stone);">By marketing in both English and Spanish, we access a wider buyer pool than most listings ever reach.</p>
           <h3 style="color:var(--green-700);margin-bottom:.75rem;margin-top:2.25rem;font-size:1rem;font-family:var(--font-sans);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">What's My Home Worth?</h3>
           <p style="color:var(--stone);">Get a free, no-obligation home valuation from the team that knows these streets.</p>
-          <a href="mailto:Carlos@vanmarproperties.com?cc=kmartinez%40vanmarlending.com&subject=Home Valuation Request" class="btn btn--gold" style="margin-top:1.25rem;">Get a Free Valuation</a>
+          <a href="mailto:Carlos@vanmarproperties.com?cc=kmartinez%40vanmarlending.com&subject=Home%20Valuation%20Request" class="btn btn--gold" style="margin-top:1.25rem;">Get a Free Valuation</a>
         </div>
       </div>
     </div>
@@ -1468,15 +1468,15 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div>
         <p class="footer__col-title">Navigate</p>
         <ul class="footer__links">
-          <li><button onclick="go('home')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Home</button></li>
-          <li><button onclick="go('about')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">About</button></li>
-          <li><button onclick="go('buying')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Buying</button></li>
-          <li><button onclick="go('selling')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Selling</button></li>
-          <li><button onclick="go('listings')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Listings</button></li>
-          <li><button onclick="go('communities')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Communities</button></li>
-          <li><button onclick="go('reviews')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Reviews</button></li>
-          <li><button onclick="go('blog')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Blog</button></li>
-          <li><button onclick="go('contact')" style="background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;font-family:inherit;padding:0;text-align:left;">Contact</button></li>
+          <li><button onclick="go('home')">Home</button></li>
+          <li><button onclick="go('about')">About</button></li>
+          <li><button onclick="go('buying')">Buying</button></li>
+          <li><button onclick="go('selling')">Selling</button></li>
+          <li><button onclick="go('listings')">Listings</button></li>
+          <li><button onclick="go('communities')">Communities</button></li>
+          <li><button onclick="go('reviews')">Reviews</button></li>
+          <li><button onclick="go('blog')">Blog</button></li>
+          <li><button onclick="go('contact')">Contact</button></li>
         </ul>
       </div>
       <div>
@@ -1494,7 +1494,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
         <ul class="footer__links">
           <li><a href="https://vanmarlending.com" target="_blank" rel="noopener">Vanmar Lending</a></li>
           <li><a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener">Book a Consultation</a></li>
-          <li><a href="mailto:Carlos@vanmarproperties.com?cc=kmartinez%40vanmarlending.com&subject=Home Valuation">Get Home Valuation</a></li>
+          <li><a href="mailto:Carlos@vanmarproperties.com?cc=kmartinez%40vanmarlending.com&subject=Home%20Valuation">Get Home Valuation</a></li>
         </ul>
         <p class="footer__col-title" style="margin-top:1.75rem;">Follow</p>
         <p style="font-size:0.75rem;color:rgba(255,255,255,.28);font-style:italic;">[Social handles — confirm with client]</p>
