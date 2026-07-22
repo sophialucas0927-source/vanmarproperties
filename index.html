@@ -535,6 +535,9 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
   </div>
 </header>
 
+<!-- Site-wide announcement — hydrated from the admin Site Settings tab (empty = hidden). -->
+<div id="site-announcement" role="status" hidden style="background:var(--gold-300,#E2CB8E);color:var(--green-900,#16331F);text-align:center;padding:10px 16px;font-size:14px;font-weight:500;"></div>
+
 <!-- MOBILE MENU -->
 <div class="mmenu" id="mmenu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
   <button class="mlink" onclick="go('home');toggleMenu()">Home</button>
@@ -575,7 +578,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <p class="hero__sub">Buy and sell with the team that knows the numbers behind every door.</p>
       <div class="hero__ctas">
         <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
-        <button class="btn btn--outline-w" onclick="go('listings')">View Listings</button>
+        <a class="btn btn--outline-w" href="#" data-config-href="mlsAllUrl" onclick="go('listings');return false;">View Properties</a>
       </div>
     </div>
     <div class="hero__tagline" aria-hidden="true">
@@ -678,7 +681,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
     </div>
     <div class="container" style="margin-top:42px;display:flex;gap:1rem;flex-wrap:wrap;">
       <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Private Showing</a>
-      <button class="btn btn--outline-d" onclick="go('listings')">View All Inventory</button>
+      <a class="btn btn--outline-d" href="#" data-config-href="mlsAllUrl" onclick="go('listings');return false;">View All Listings</a>
     </div>
   </section>
 
@@ -1278,6 +1281,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <span class="gold-label">Our Home Base</span>
           <h2 class="reveal">Palm Desert</h2>
           <div class="divider"></div>
+          <a class="btn btn--outline-d" href="#" data-config-href="mlsByCity.palmDesert" hidden target="_blank" rel="noopener" style="margin-bottom:8px;">Search Palm Desert listings on the MLS →</a>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:24px;">
             <div><p style="color:var(--stone);">Palm Desert is the heart of the Coachella Valley — a thriving city with world-class dining, retail, and culture. El Paseo, the "Rodeo Drive of the Desert," anchors a community where luxury living meets everyday convenience.</p><p style="color:var(--stone);">Home to top-rated schools, the McCallum Theatre, and some of the valley's most desirable residential neighborhoods.</p></div>
             <div class="photo-ph" style="aspect-ratio:16/9;"><img src="photos/palm-desert.jpg" alt="Palm Desert neighborhood" loading="lazy" onerror="this.style.display='none'"></div>
@@ -1287,6 +1291,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <span class="gold-label">Desert Luxury</span>
           <h2 class="reveal">La Quinta</h2>
           <div class="divider"></div>
+          <a class="btn btn--outline-d" href="#" data-config-href="mlsByCity.laQuinta" hidden target="_blank" rel="noopener" style="margin-bottom:8px;">Search La Quinta listings on the MLS →</a>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:24px;">
             <div class="photo-ph" style="aspect-ratio:16/9;"><img src="photos/la-quinta.jpg" alt="La Quinta golf course with mountains" loading="lazy" onerror="this.style.display='none'"></div>
             <div><p style="color:var(--stone);">La Quinta is where the desert meets distinction. Home to PGA West, the La Quinta Resort, and some of the valley's most prestigious gated communities, it draws buyers who want privacy, prestige, and world-class amenities.</p><p style="color:var(--stone);">Old Town La Quinta adds an arts-and-culture dimension with galleries, restaurants, and farmers markets.</p></div>
@@ -1296,6 +1301,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <span class="gold-label">Prestige Living</span>
           <h2 class="reveal">Indian Wells</h2>
           <div class="divider"></div>
+          <a class="btn btn--outline-d" href="#" data-config-href="mlsByCity.indianWells" hidden target="_blank" rel="noopener" style="margin-bottom:8px;">Search Indian Wells listings on the MLS →</a>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:24px;">
             <div><p style="color:var(--stone);">Indian Wells is the valley's most exclusive enclave — a small, quiet city known for stunning mountain views, manicured fairways, and a remarkably low crime rate. Home to the BNP Paribas Open.</p><p style="color:var(--stone);">With some of the most coveted addresses in the desert, Indian Wells attracts discerning buyers who value privacy and uncompromising quality of life.</p></div>
             <div class="photo-ph" style="aspect-ratio:16/9;"><img src="photos/indian-wells.jpg" alt="Indian Wells golf course" loading="lazy" onerror="this.style.display='none'"></div>
@@ -1306,7 +1312,10 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <h3>Rancho Mirage · Palm Springs · Indio · Bermuda Dunes · Coachella · Cathedral City</h3>
           <div class="divider"></div>
           <p style="color:var(--stone);">We serve buyers and sellers across the entire Coachella Valley. Contact us for neighborhood-specific insights.</p>
-          <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold" style="margin-top:1.75rem;">Talk to a Local Expert</a>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.75rem;">
+            <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Talk to a Local Expert</a>
+            <a class="btn btn--outline-d" href="#" data-config-href="mlsAllUrl" hidden target="_blank" rel="noopener">Browse all local MLS listings →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1602,6 +1611,44 @@ function handleForm(e) {
   var interest = document.getElementById('interest').value;
   window.location.href = 'mailto:Carlos@vanmarproperties.com?cc=kmartinez%40vanmarlending.com&subject=Website Inquiry from ' + encodeURIComponent(name) + ' — ' + encodeURIComponent(interest) + '&body=From: ' + encodeURIComponent(name) + '%0AEmail: ' + encodeURIComponent(email);
 }
+</script>
+
+<!-- Site-wide settings hydration. Fetches the shared config from the admin app
+     and fills the announcement banner + any [data-config-href] MLS links. When
+     an MLS URL is configured, the hero "View Properties" buttons open it in a
+     new tab; until then they fall back to the in-page Listings view. Fails
+     silently so the built-in HTML stays the fallback. -->
+<script>
+(function () {
+  var CFG_API = "https://vanmar-suites-admin.vercel.app/api/site-config";
+  function getPath(obj, path) {
+    return path.split(".").reduce(function (o, k) {
+      return o && o[k] != null ? o[k] : null;
+    }, obj);
+  }
+  fetch(CFG_API)
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (cfg) {
+      if (!cfg) return;
+      document.querySelectorAll("[data-config]").forEach(function (el) {
+        var val = getPath(cfg, el.getAttribute("data-config"));
+        if (val) el.textContent = val;
+      });
+      document.querySelectorAll("[data-config-href]").forEach(function (el) {
+        var val = getPath(cfg, el.getAttribute("data-config-href"));
+        if (val) {
+          el.setAttribute("href", val);
+          el.setAttribute("target", "_blank");
+          el.setAttribute("rel", "noopener");
+          el.onclick = null;              // drop the in-page fallback once a real MLS link exists
+          el.removeAttribute("hidden");
+        }
+      });
+      var banner = document.getElementById("site-announcement");
+      if (banner && cfg.announcement) { banner.textContent = cfg.announcement; banner.hidden = false; }
+    })
+    .catch(function () {});
+})();
 </script>
 </body>
 </html>
