@@ -996,6 +996,21 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div class="divider"></div>
     </div>
   </div>
+  <!-- Browse by community — dropdown + buttons (like the example site). Populated + revealed by hydrateSiteConfig from the MLS links set in admin Site Settings. -->
+  <section class="section" id="browse-community-section" hidden style="padding-bottom:0;">
+    <div class="container">
+      <span class="gold-label">Browse Listings</span>
+      <h2 style="margin-top:6px;">See every property by community.</h2>
+      <div class="divider"></div>
+      <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+        <label for="community-select" style="font-weight:600;color:var(--ink);">Search by community:</label>
+        <select id="community-select" style="min-height:48px;padding:10px 16px;font-size:15px;border:1px solid var(--gold-500);background:var(--white,#fff);color:var(--ink);min-width:240px;">
+          <option value="">Choose a community…</option>
+        </select>
+      </div>
+      <div id="community-buttons" style="margin-top:18px;display:flex;flex-wrap:wrap;gap:.75rem;"></div>
+    </div>
+  </section>
   <!-- IDXBroker live MLS search — revealed + filled by hydrateSiteConfig when a widget snippet is set in admin Site Settings. -->
   <section class="section" id="idx-search-section" hidden style="padding-bottom:0;">
     <div class="container">
@@ -1678,6 +1693,42 @@ function handleForm(e) {
         });
         var idxSection = document.getElementById("idx-search-section");
         if (idxSection) idxSection.hidden = false;
+      }
+
+      // Browse-by-community dropdown + buttons under Listings — built from the
+      // MLS links in Site Settings (All Listings + per city). Only cities with
+      // a link appear; the whole block stays hidden until at least one is set.
+      var CITY_LABELS = [
+        ["__all__", "All Listings"],
+        ["palmDesert", "Palm Desert"],
+        ["laQuinta", "La Quinta"],
+        ["indianWells", "Indian Wells"],
+        ["ranchoMirage", "Rancho Mirage"],
+        ["palmSprings", "Palm Springs"],
+        ["more", "Surrounding Areas"]
+      ];
+      var sel = document.getElementById("community-select");
+      var btnHost = document.getElementById("community-buttons");
+      var anyCity = false;
+      CITY_LABELS.forEach(function (pair) {
+        var url = pair[0] === "__all__" ? cfg.mlsAllUrl : (cfg.mlsByCity && cfg.mlsByCity[pair[0]]);
+        if (!url) return;
+        anyCity = true;
+        if (sel) { var o = document.createElement("option"); o.value = url; o.textContent = pair[1]; sel.appendChild(o); }
+        if (btnHost) {
+          var a = document.createElement("a");
+          a.className = "btn btn--outline-d";
+          a.href = url; a.target = "_blank"; a.rel = "noopener";
+          a.textContent = pair[1];
+          btnHost.appendChild(a);
+        }
+      });
+      if (anyCity) {
+        var browseSection = document.getElementById("browse-community-section");
+        if (browseSection) browseSection.hidden = false;
+        if (sel) sel.addEventListener("change", function () {
+          if (this.value) window.open(this.value, "_blank", "noopener");
+        });
       }
     })
     .catch(function () {});
