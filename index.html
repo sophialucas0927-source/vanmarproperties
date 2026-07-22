@@ -996,6 +996,15 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div class="divider"></div>
     </div>
   </div>
+  <!-- IDXBroker live MLS search — revealed + filled by hydrateSiteConfig when a widget snippet is set in admin Site Settings. -->
+  <section class="section" id="idx-search-section" hidden style="padding-bottom:0;">
+    <div class="container">
+      <span class="gold-label">Search the MLS</span>
+      <h2 style="margin-top:6px;">Find every local listing.</h2>
+      <div class="divider"></div>
+      <div id="idx-search-widget" style="margin-top:20px;"></div>
+    </div>
+  </section>
   <section class="section">
     <div class="container">
       <div class="listing-hero" style="margin-bottom:3px;">
@@ -1646,6 +1655,30 @@ function handleForm(e) {
       });
       var banner = document.getElementById("site-announcement");
       if (banner && cfg.announcement) { banner.textContent = cfg.announcement; banner.hidden = false; }
+
+      // IDXBroker search widget: inject the snippet from Site Settings and
+      // reveal the search section. Script tags set via innerHTML don't execute,
+      // so we recreate each <script> element for real.
+      var idxHost = document.getElementById("idx-search-widget");
+      if (idxHost && cfg.idxWidgetHtml) {
+        var tmp = document.createElement("div");
+        tmp.innerHTML = cfg.idxWidgetHtml;
+        Array.prototype.slice.call(tmp.childNodes).forEach(function (node) {
+          if (node.tagName === "SCRIPT") {
+            var s = document.createElement("script");
+            if (node.src) s.src = node.src;
+            if (node.id) s.id = node.id;
+            s.type = node.type || "text/javascript";
+            if (node.charset) s.charset = node.charset;
+            if (!node.src) s.text = node.textContent || "";
+            idxHost.appendChild(s);
+          } else {
+            idxHost.appendChild(node.cloneNode(true));
+          }
+        });
+        var idxSection = document.getElementById("idx-search-section");
+        if (idxSection) idxSection.hidden = false;
+      }
     })
     .catch(function () {});
 })();
