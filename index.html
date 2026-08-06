@@ -432,8 +432,12 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 }
 .idx-filter-field select:focus { outline: none; border-color: var(--gold-500); box-shadow: 0 0 0 3px rgba(199,161,74,0.12); }
 .idx-filter-submit { flex: 0 0 auto; white-space: nowrap; }
+/* 560px, not taller: IDX Broker's widget hardcodes its map canvas and
+   results panel to 500px internally (inside its Shadow DOM, unreachable
+   from here) - a taller frame just adds dead space below it. Confirmed
+   by inspecting the live shadow tree before picking this value. */
 .idx-map-frame {
-  position: relative; width: 100%; height: 820px; margin-top: 3px;
+  position: relative; width: 100%; height: 560px; margin-top: 3px;
   border-top: 2px solid var(--gold-500); box-shadow: var(--shadow-sm); background: var(--cream);
 }
 #idx-search-widget { width: 100%; height: 100%; }
@@ -449,11 +453,9 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 }
 @keyframes idx-spin { to { transform: rotate(360deg); } }
 @media (max-width: 900px) {
-  .idx-map-frame { height: 620px; }
   .idx-filter-bar { padding: 22px 20px; }
 }
 @media (max-width: 540px) {
-  .idx-map-frame { height: 520px; }
   .idx-filter-field { flex-basis: 100%; }
   .idx-filter-submit { width: 100%; }
 }
