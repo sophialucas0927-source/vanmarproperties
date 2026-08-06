@@ -29,7 +29,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
 /* =============================================
    DESIGN TOKENS
@@ -399,21 +398,6 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 .cv a { color: var(--ink); transition: color var(--t); }
 .cv a:hover { color: var(--gold-500); }
 .map-ph { height: 260px; background: linear-gradient(135deg, var(--green-700), var(--green-900)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: center; padding: 20px; }
-
-/* =============================================
-   OFFICE MAP (Leaflet / OpenStreetMap, no API key), Contact page only
-============================================= */
-.contact-map-wrap { flex: 1; min-height: 420px; position: relative; }
-#contact-map { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--green-900); }
-.vm-pin { display: block; width: 16px; height: 16px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.45); cursor: pointer; }
-.vm-pin--office { background: var(--ink); }
-.vm-popup { min-width: 190px; font-family: var(--font-sans); }
-.vm-popup__tag { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-500); font-weight: 700; margin-bottom: 4px; }
-.vm-popup h4 { font-family: var(--font-serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 3px; line-height: 1.25; }
-.vm-popup__sub { font-size: 0.75rem; color: var(--stone); margin-bottom: 6px; }
-.leaflet-popup-content-wrapper { border-radius: 0; border-top: 2px solid var(--gold-500); box-shadow: var(--shadow-sm); }
-.leaflet-popup-content { margin: 14px 16px; }
-.leaflet-popup-tip { display: none; }
 
 /* =============================================
    IDX MLS SEARCH (filter bar + live widget frame)
@@ -1599,7 +1583,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <div><p class="cl">Hours</p><p class="cv">Mon-Fri 8:30 AM to 5:30 PM<br>Saturdays by appointment</p></div>
           <div><p class="cl">Languages</p><p class="cv">English &amp; Español</p></div>
           <div><p class="cl">Sister Companies</p><p class="cv"><a href="https://vanmarlending.com" target="_blank" rel="noopener">Vanmar Lending →</a><br><a href="https://vanmarsuites.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:6px;">Vanmar Executive Suites →</a></p></div>
-          <div class="contact-map-wrap" role="region" aria-label="Map showing the VanMar Properties office at 77824 Wildcat Drive, Palm Desert, CA 92211"><div id="contact-map"></div></div>
+          <iframe src="https://www.google.com/maps?q=77824+Wildcat+Drive,+Palm+Desert,+CA+92211&output=embed" width="100%" height="280" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to 77824 Wildcat Drive, Palm Desert, CA 92211"></iframe>
           <div>
             <p class="cl">Book Online</p>
             <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
@@ -1786,28 +1770,6 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 <!-- ========================================
      JAVASCRIPT
 ======================================== -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script>
-/* ============ Office map (Leaflet + OpenStreetMap, no API key required) ============ */
-var VM_OFFICE = { lat: 33.7651, lng: -116.3065, title: 'VanMar Properties', sub: '77824 Wildcat Drive, Palm Desert, CA 92211' };
-var VM_TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-var VM_TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
-var _vmContactMap = null;
-function initContactMap() {
-  var el = document.getElementById('contact-map');
-  if (!el || _vmContactMap) { if (_vmContactMap) _vmContactMap.invalidateSize(); return; }
-  _vmContactMap = L.map(el, { scrollWheelZoom: false }).setView([VM_OFFICE.lat, VM_OFFICE.lng], 12);
-  L.tileLayer(VM_TILE_URL, { maxZoom: 18, attribution: VM_TILE_ATTR }).addTo(_vmContactMap);
-  var icon = L.divIcon({ className: '', html: '<span class="vm-pin vm-pin--office"></span>', iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10] });
-  L.marker([VM_OFFICE.lat, VM_OFFICE.lng], { icon: icon }).addTo(_vmContactMap)
-    .bindPopup('<div class="vm-popup"><p class="vm-popup__tag">Our Office</p><h4>' + VM_OFFICE.title + '</h4><p class="vm-popup__sub">' + VM_OFFICE.sub + '</p></div>')
-    .openPopup();
-  setTimeout(function() { _vmContactMap.invalidateSize(); }, 200);
-}
-window.addEventListener('resize', function() {
-  if (_vmContactMap) _vmContactMap.invalidateSize();
-});
-</script>
 <script>
 /* ============ IDX Broker MLS search: brand theming + city/price/type filter bar ============
    The widget (custom element <idx-prime-map-search>, injected by hydrateSiteConfig from a
@@ -1897,7 +1859,6 @@ function go(view) {
   if (match) match.classList.add('on');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   setTimeout(initReveal, 100);
-  if (view === 'contact') setTimeout(initContactMap, 150);
 }
 
 /* Defer image loading: only load images when their view is opened */
