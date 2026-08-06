@@ -29,6 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
 /* =============================================
    DESIGN TOKENS
@@ -398,6 +399,34 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 .cv a { color: var(--ink); transition: color var(--t); }
 .cv a:hover { color: var(--gold-500); }
 .map-ph { height: 260px; background: linear-gradient(135deg, var(--green-700), var(--green-900)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: center; padding: 20px; }
+
+/* =============================================
+   PROPERTY MAP (Leaflet / OpenStreetMap, no API key)
+============================================= */
+.listings-map-wrap { width: 100%; height: 560px; position: relative; }
+#listings-map { width: 100%; height: 100%; background: var(--green-900); }
+.contact-map-wrap { flex: 1; min-height: 420px; position: relative; }
+#contact-map { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--green-900); }
+.map-legend { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; margin: 22px 0 4px; font-size: 0.8rem; color: var(--stone); }
+.map-legend__dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 7px; vertical-align: middle; }
+.vm-pin { display: block; width: 16px; height: 16px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.45); cursor: pointer; }
+.vm-pin--gold { background: var(--gold-500); }
+.vm-pin--green { background: var(--green-700); }
+.vm-pin--office { background: var(--ink); }
+.vm-popup { min-width: 190px; font-family: var(--font-sans); }
+.vm-popup__tag { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-500); font-weight: 700; margin-bottom: 4px; }
+.vm-popup h4 { font-family: var(--font-serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 3px; line-height: 1.25; }
+.vm-popup__sub { font-size: 0.75rem; color: var(--stone); margin-bottom: 6px; }
+.vm-popup__price { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; color: var(--green-700); margin-bottom: 3px; }
+.vm-popup__meta { font-size: 0.72rem; color: var(--stone); margin-bottom: 8px; }
+.vm-popup__link { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: var(--gold-500); text-decoration: none; }
+.vm-popup__link:hover { text-decoration: underline; }
+.leaflet-popup-content-wrapper { border-radius: 0; border-top: 2px solid var(--gold-500); box-shadow: var(--shadow-sm); }
+.leaflet-popup-content { margin: 14px 16px; }
+.leaflet-popup-tip { display: none; }
+@media (max-width: 768px) {
+  .listings-map-wrap { height: 380px; }
+}
 
 /* =============================================
    ABOUT
@@ -1036,6 +1065,22 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div id="idx-search-widget" style="margin-top:20px;"></div>
     </div>
   </section>
+  <section class="section" style="padding-bottom:0;">
+    <div class="container">
+      <span class="gold-label">Where We're Selling</span>
+      <h2 style="margin-top:6px;">Every listing, across the valley.</h2>
+      <div class="divider"></div>
+      <p style="max-width:640px;color:var(--stone);margin-top:1rem;">Vacant commercial land, investment parcels, and move-in-ready estates. Here's the full range of what's active right now, low to high.</p>
+    </div>
+    <div class="listings-map-wrap reveal" role="region" aria-label="Map of current VanMar Properties listings across the Coachella Valley"><div id="listings-map"></div></div>
+    <div class="container">
+      <div class="map-legend">
+        <span><i class="map-legend__dot" style="background:var(--gold-500);"></i>Commercial / Industrial Land</span>
+        <span><i class="map-legend__dot" style="background:var(--green-700);"></i>Residential / Investment Land</span>
+        <span><i class="map-legend__dot" style="background:var(--ink);"></i>Our Office</span>
+      </div>
+    </div>
+  </section>
   <section class="section">
     <div class="container">
       <div class="listing-hero" style="margin-bottom:3px;">
@@ -1488,7 +1533,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
           <div><p class="cl">Hours</p><p class="cv">Mon-Fri 8:30 AM to 5:30 PM<br>Saturdays by appointment</p></div>
           <div><p class="cl">Languages</p><p class="cv">English &amp; Español</p></div>
           <div><p class="cl">Sister Companies</p><p class="cv"><a href="https://vanmarlending.com" target="_blank" rel="noopener">Vanmar Lending →</a><br><a href="https://vanmarsuites.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:6px;">Vanmar Executive Suites →</a></p></div>
-          <iframe src="https://www.google.com/maps?q=77824+Wildcat+Drive,+Palm+Desert,+CA+92211&output=embed" width="100%" height="280" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to 77824 Wildcat Drive, Palm Desert, CA 92211"></iframe>
+          <div class="contact-map-wrap" role="region" aria-label="Map showing the VanMar Properties office at 77824 Wildcat Drive, Palm Desert, CA 92211"><div id="contact-map"></div></div>
           <div>
             <p class="cl">Book Online</p>
             <a href="https://cal.com/cmtz41/free-consultation" target="_blank" rel="noopener" class="btn btn--gold">Book a Free Consultation</a>
@@ -1675,6 +1720,62 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 <!-- ========================================
      JAVASCRIPT
 ======================================== -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+/* ============ Property map (Leaflet + OpenStreetMap, no API key required) ============
+   Coordinates below were geocoded once from each listing's street address and are
+   fixed here rather than looked up live, since Nominatim's public API isn't meant
+   for per-pageview traffic. Update lat/lng if a listing's address changes. */
+/* Scoped to the Coachella Valley on purpose: the $5.99M 264 South Hwy 173
+   listing (Lake Arrowhead, ~90mi away) has its own hero section on this page.
+   Plotting it here would force the map to zoom out so far the actual desert
+   listings shrink to an invisible cluster. */
+var VM_LISTINGS = [
+  { lat: 33.7651, lng: -116.3065, type: 'office', title: 'VanMar Properties', sub: '77824 Wildcat Drive, Palm Desert, CA 92211' },
+  { lat: 33.7049, lng: -116.1931, type: 'commercial', title: '84404 Cabazon Center Dr', place: 'Indio, CA 92201', price: '$499,000', meta: '1.03 Acres · 44,867 Sq Ft', url: 'https://www.flexmls.com/share/EEUdU/84404-Cabazon-Center-Drive-Indio-CA-92201' },
+  { lat: 33.7539, lng: -116.3017, type: 'residential', title: '0 Emerald Cove', place: 'Bermuda Dunes, CA 92203', price: '$899,995', meta: '1.18 Acres · 51,400 Sq Ft', url: 'https://www.flexmls.com/share/EEUf9/0-Emerald-Cove-Bermuda-Dunes-CA-92203' },
+  { lat: 33.7493, lng: -116.2994, type: 'residential', title: '0 Yucca Lane', place: 'Bermuda Dunes, CA 92203', price: '$899,995', meta: '51,400 Sq Ft', url: 'https://www.flexmls.com/share/EEUff/0-Yucca-Lane-Bermuda-Dunes-CA-92203' }
+];
+var VM_PIN_CLASS = { office: 'vm-pin--office', commercial: 'vm-pin--gold', residential: 'vm-pin--green' };
+var VM_TAG = { office: 'Our Office', commercial: 'Commercial / Industrial', residential: 'Residential / Investment' };
+function vmPinIcon(type) {
+  return L.divIcon({ className: '', html: '<span class="vm-pin ' + (VM_PIN_CLASS[type] || 'vm-pin--gold') + '"></span>', iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10] });
+}
+function vmPopupHtml(l) {
+  var html = '<div class="vm-popup"><p class="vm-popup__tag">' + VM_TAG[l.type] + '</p><h4>' + l.title + '</h4><p class="vm-popup__sub">' + (l.sub || l.place || '') + '</p>';
+  if (l.type !== 'office') {
+    html += '<p class="vm-popup__price">' + l.price + '</p><p class="vm-popup__meta">' + l.meta + '</p><a href="' + l.url + '" target="_blank" rel="noopener" class="vm-popup__link">View Listing →</a>';
+  }
+  return html + '</div>';
+}
+var VM_TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var VM_TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
+var _vmListingsMap = null, _vmContactMap = null;
+function initListingsMap() {
+  var el = document.getElementById('listings-map');
+  if (!el || _vmListingsMap) { if (_vmListingsMap) _vmListingsMap.invalidateSize(); return; }
+  _vmListingsMap = L.map(el, { scrollWheelZoom: false });
+  L.tileLayer(VM_TILE_URL, { maxZoom: 18, attribution: VM_TILE_ATTR }).addTo(_vmListingsMap);
+  var markers = VM_LISTINGS.map(function(l) {
+    return L.marker([l.lat, l.lng], { icon: vmPinIcon(l.type) }).addTo(_vmListingsMap).bindPopup(vmPopupHtml(l));
+  });
+  _vmListingsMap.fitBounds(L.featureGroup(markers).getBounds(), { padding: [44, 44], maxZoom: 13 });
+  setTimeout(function() { _vmListingsMap.invalidateSize(); }, 200);
+}
+function initContactMap() {
+  var el = document.getElementById('contact-map');
+  if (!el || _vmContactMap) { if (_vmContactMap) _vmContactMap.invalidateSize(); return; }
+  var office = VM_LISTINGS[0];
+  _vmContactMap = L.map(el, { scrollWheelZoom: false }).setView([office.lat, office.lng], 12);
+  L.tileLayer(VM_TILE_URL, { maxZoom: 18, attribution: VM_TILE_ATTR }).addTo(_vmContactMap);
+  L.marker([office.lat, office.lng], { icon: vmPinIcon('office') }).addTo(_vmContactMap).bindPopup(vmPopupHtml(office)).openPopup();
+  setTimeout(function() { _vmContactMap.invalidateSize(); }, 200);
+}
+window.addEventListener('resize', function() {
+  if (_vmListingsMap) _vmListingsMap.invalidateSize();
+  if (_vmContactMap) _vmContactMap.invalidateSize();
+});
+</script>
 <script>
 /* View switching */
 function go(view) {
@@ -1692,6 +1793,8 @@ function go(view) {
   if (match) match.classList.add('on');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   setTimeout(initReveal, 100);
+  if (view === 'listings') setTimeout(initListingsMap, 150);
+  if (view === 'contact') setTimeout(initContactMap, 150);
 }
 
 /* Defer image loading: only load images when their view is opened */
