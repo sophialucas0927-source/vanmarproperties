@@ -401,31 +401,61 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 .map-ph { height: 260px; background: linear-gradient(135deg, var(--green-700), var(--green-900)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: center; padding: 20px; }
 
 /* =============================================
-   PROPERTY MAP (Leaflet / OpenStreetMap, no API key)
+   OFFICE MAP (Leaflet / OpenStreetMap, no API key), Contact page only
 ============================================= */
-.listings-map-wrap { width: 100%; height: 560px; position: relative; }
-#listings-map { width: 100%; height: 100%; background: var(--green-900); }
 .contact-map-wrap { flex: 1; min-height: 420px; position: relative; }
 #contact-map { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--green-900); }
-.map-legend { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; margin: 22px 0 4px; font-size: 0.8rem; color: var(--stone); }
-.map-legend__dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 7px; vertical-align: middle; }
 .vm-pin { display: block; width: 16px; height: 16px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.45); cursor: pointer; }
-.vm-pin--gold { background: var(--gold-500); }
-.vm-pin--green { background: var(--green-700); }
 .vm-pin--office { background: var(--ink); }
 .vm-popup { min-width: 190px; font-family: var(--font-sans); }
 .vm-popup__tag { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-500); font-weight: 700; margin-bottom: 4px; }
 .vm-popup h4 { font-family: var(--font-serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 3px; line-height: 1.25; }
 .vm-popup__sub { font-size: 0.75rem; color: var(--stone); margin-bottom: 6px; }
-.vm-popup__price { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; color: var(--green-700); margin-bottom: 3px; }
-.vm-popup__meta { font-size: 0.72rem; color: var(--stone); margin-bottom: 8px; }
-.vm-popup__link { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: var(--gold-500); text-decoration: none; }
-.vm-popup__link:hover { text-decoration: underline; }
 .leaflet-popup-content-wrapper { border-radius: 0; border-top: 2px solid var(--gold-500); box-shadow: var(--shadow-sm); }
 .leaflet-popup-content { margin: 14px 16px; }
 .leaflet-popup-tip { display: none; }
-@media (max-width: 768px) {
-  .listings-map-wrap { height: 380px; }
+
+/* =============================================
+   IDX MLS SEARCH (filter bar + live widget frame)
+============================================= */
+.idx-filter-bar {
+  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.25rem;
+  margin-top: 32px; padding: 28px 32px; background: var(--cream); border-top: 2px solid var(--gold-500); box-shadow: var(--shadow-sm);
+}
+.idx-filter-field { display: flex; flex-direction: column; gap: 0.45rem; flex: 1 1 200px; min-width: 180px; }
+.idx-filter-field label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+.idx-filter-field select {
+  padding: 14px 16px; background: var(--white); border: 1px solid rgba(0,0,0,0.12);
+  font-family: var(--font-sans); font-size: 0.9rem; color: var(--ink);
+  transition: border-color var(--t), box-shadow var(--t); border-radius: 0;
+  -webkit-appearance: none; appearance: none; min-height: 50px;
+}
+.idx-filter-field select:focus { outline: none; border-color: var(--gold-500); box-shadow: 0 0 0 3px rgba(199,161,74,0.12); }
+.idx-filter-submit { flex: 0 0 auto; white-space: nowrap; }
+.idx-map-frame {
+  position: relative; width: 100%; height: 820px; margin-top: 3px;
+  border-top: 2px solid var(--gold-500); box-shadow: var(--shadow-sm); background: var(--cream);
+}
+#idx-search-widget { width: 100%; height: 100%; }
+.idx-loading {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; background: var(--cream); color: var(--stone); font-size: 0.8rem; letter-spacing: 0.05em;
+  transition: opacity 0.4s ease;
+}
+.idx-loading.is-hidden { opacity: 0; pointer-events: none; }
+.idx-loading__spinner {
+  width: 30px; height: 30px; border-radius: 50%; border: 2px solid rgba(199,161,74,0.25); border-top-color: var(--gold-500);
+  animation: idx-spin 0.9s linear infinite;
+}
+@keyframes idx-spin { to { transform: rotate(360deg); } }
+@media (max-width: 900px) {
+  .idx-map-frame { height: 620px; }
+  .idx-filter-bar { padding: 22px 20px; }
+}
+@media (max-width: 540px) {
+  .idx-map-frame { height: 520px; }
+  .idx-filter-field { flex-basis: 100%; }
+  .idx-filter-submit { width: 100%; }
 }
 
 /* =============================================
@@ -1057,27 +1087,61 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
     </div>
   </section>
   <!-- IDXBroker live MLS search: revealed + filled by hydrateSiteConfig when a widget snippet is set in admin Site Settings. -->
-  <section class="section" id="idx-search-section" hidden style="padding-bottom:0;">
+  <section class="section" id="idx-search-section" hidden>
     <div class="container">
       <span class="gold-label">Search the MLS</span>
       <h2 style="margin-top:6px;">Find every local listing.</h2>
       <div class="divider"></div>
-      <div id="idx-search-widget" style="margin-top:20px;"></div>
-    </div>
-  </section>
-  <section class="section" style="padding-bottom:0;">
-    <div class="container">
-      <span class="gold-label">Where We're Selling</span>
-      <h2 style="margin-top:6px;">Every listing, across the valley.</h2>
-      <div class="divider"></div>
-      <p style="max-width:640px;color:var(--stone);margin-top:1rem;">Vacant commercial land, investment parcels, and move-in-ready estates. Here's the full range of what's active right now, low to high.</p>
-    </div>
-    <div class="listings-map-wrap reveal" role="region" aria-label="Map of current VanMar Properties listings across the Coachella Valley"><div id="listings-map"></div></div>
-    <div class="container">
-      <div class="map-legend">
-        <span><i class="map-legend__dot" style="background:var(--gold-500);"></i>Commercial / Industrial Land</span>
-        <span><i class="map-legend__dot" style="background:var(--green-700);"></i>Residential / Investment Land</span>
-        <span><i class="map-legend__dot" style="background:var(--ink);"></i>Our Office</span>
+      <p style="max-width:640px;color:var(--stone);margin-top:1rem;">Every active listing in the Coachella Valley, updated live from the MLS. Filter by city, price, or property type to narrow the map.</p>
+
+      <form id="idx-filter-bar" class="idx-filter-bar reveal" onsubmit="return applyIdxFilters(event)">
+        <div class="idx-filter-field">
+          <label for="idx-f-city">City</label>
+          <select id="idx-f-city">
+            <option value="">All Cities</option>
+            <option value="35214">Palm Desert</option>
+            <option value="24819">La Quinta</option>
+            <option value="22551">Indian Wells</option>
+            <option value="38409">Rancho Mirage</option>
+            <option value="35217">Palm Springs</option>
+            <option value="22567">Indio</option>
+            <option value="3765">Bermuda Dunes</option>
+            <option value="7692">Cathedral City</option>
+            <option value="9392">Coachella</option>
+            <option value="12153">Desert Hot Springs</option>
+            <option value="46304">Thousand Palms</option>
+            <option value="46189">Thermal</option>
+          </select>
+        </div>
+        <div class="idx-filter-field">
+          <label for="idx-f-price">Price Range</label>
+          <select id="idx-f-price">
+            <option value="">Any Price</option>
+            <option value="0-500000">Under $500K</option>
+            <option value="500000-1000000">$500K to $1M</option>
+            <option value="1000000-3000000">$1M to $3M</option>
+            <option value="3000000-10000000">$3M to $10M</option>
+            <option value="10000000-">$10M+</option>
+          </select>
+        </div>
+        <div class="idx-filter-field">
+          <label for="idx-f-type">Property Type</label>
+          <select id="idx-f-type">
+            <option value="">All Types</option>
+            <option value="1">Residential</option>
+            <option value="5">Land</option>
+            <option value="6">Commercial</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--gold idx-filter-submit">Search Listings</button>
+      </form>
+
+      <div class="idx-map-frame reveal">
+        <div id="idx-search-widget"></div>
+        <div id="idx-search-loading" class="idx-loading" aria-live="polite">
+          <div class="idx-loading__spinner" aria-hidden="true"></div>
+          <p>Loading live listings&hellip;</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1722,59 +1786,97 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 ======================================== -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-/* ============ Property map (Leaflet + OpenStreetMap, no API key required) ============
-   Coordinates below were geocoded once from each listing's street address and are
-   fixed here rather than looked up live, since Nominatim's public API isn't meant
-   for per-pageview traffic. Update lat/lng if a listing's address changes. */
-/* Scoped to the Coachella Valley on purpose: the $5.99M 264 South Hwy 173
-   listing (Lake Arrowhead, ~90mi away) has its own hero section on this page.
-   Plotting it here would force the map to zoom out so far the actual desert
-   listings shrink to an invisible cluster. */
-var VM_LISTINGS = [
-  { lat: 33.7651, lng: -116.3065, type: 'office', title: 'VanMar Properties', sub: '77824 Wildcat Drive, Palm Desert, CA 92211' },
-  { lat: 33.7049, lng: -116.1931, type: 'commercial', title: '84404 Cabazon Center Dr', place: 'Indio, CA 92201', price: '$499,000', meta: '1.03 Acres · 44,867 Sq Ft', url: 'https://www.flexmls.com/share/EEUdU/84404-Cabazon-Center-Drive-Indio-CA-92201' },
-  { lat: 33.7539, lng: -116.3017, type: 'residential', title: '0 Emerald Cove', place: 'Bermuda Dunes, CA 92203', price: '$899,995', meta: '1.18 Acres · 51,400 Sq Ft', url: 'https://www.flexmls.com/share/EEUf9/0-Emerald-Cove-Bermuda-Dunes-CA-92203' },
-  { lat: 33.7493, lng: -116.2994, type: 'residential', title: '0 Yucca Lane', place: 'Bermuda Dunes, CA 92203', price: '$899,995', meta: '51,400 Sq Ft', url: 'https://www.flexmls.com/share/EEUff/0-Yucca-Lane-Bermuda-Dunes-CA-92203' }
-];
-var VM_PIN_CLASS = { office: 'vm-pin--office', commercial: 'vm-pin--gold', residential: 'vm-pin--green' };
-var VM_TAG = { office: 'Our Office', commercial: 'Commercial / Industrial', residential: 'Residential / Investment' };
-function vmPinIcon(type) {
-  return L.divIcon({ className: '', html: '<span class="vm-pin ' + (VM_PIN_CLASS[type] || 'vm-pin--gold') + '"></span>', iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10] });
-}
-function vmPopupHtml(l) {
-  var html = '<div class="vm-popup"><p class="vm-popup__tag">' + VM_TAG[l.type] + '</p><h4>' + l.title + '</h4><p class="vm-popup__sub">' + (l.sub || l.place || '') + '</p>';
-  if (l.type !== 'office') {
-    html += '<p class="vm-popup__price">' + l.price + '</p><p class="vm-popup__meta">' + l.meta + '</p><a href="' + l.url + '" target="_blank" rel="noopener" class="vm-popup__link">View Listing →</a>';
-  }
-  return html + '</div>';
-}
+/* ============ Office map (Leaflet + OpenStreetMap, no API key required) ============ */
+var VM_OFFICE = { lat: 33.7651, lng: -116.3065, title: 'VanMar Properties', sub: '77824 Wildcat Drive, Palm Desert, CA 92211' };
 var VM_TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 var VM_TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
-var _vmListingsMap = null, _vmContactMap = null;
-function initListingsMap() {
-  var el = document.getElementById('listings-map');
-  if (!el || _vmListingsMap) { if (_vmListingsMap) _vmListingsMap.invalidateSize(); return; }
-  _vmListingsMap = L.map(el, { scrollWheelZoom: false });
-  L.tileLayer(VM_TILE_URL, { maxZoom: 18, attribution: VM_TILE_ATTR }).addTo(_vmListingsMap);
-  var markers = VM_LISTINGS.map(function(l) {
-    return L.marker([l.lat, l.lng], { icon: vmPinIcon(l.type) }).addTo(_vmListingsMap).bindPopup(vmPopupHtml(l));
-  });
-  _vmListingsMap.fitBounds(L.featureGroup(markers).getBounds(), { padding: [44, 44], maxZoom: 13 });
-  setTimeout(function() { _vmListingsMap.invalidateSize(); }, 200);
-}
+var _vmContactMap = null;
 function initContactMap() {
   var el = document.getElementById('contact-map');
   if (!el || _vmContactMap) { if (_vmContactMap) _vmContactMap.invalidateSize(); return; }
-  var office = VM_LISTINGS[0];
-  _vmContactMap = L.map(el, { scrollWheelZoom: false }).setView([office.lat, office.lng], 12);
+  _vmContactMap = L.map(el, { scrollWheelZoom: false }).setView([VM_OFFICE.lat, VM_OFFICE.lng], 12);
   L.tileLayer(VM_TILE_URL, { maxZoom: 18, attribution: VM_TILE_ATTR }).addTo(_vmContactMap);
-  L.marker([office.lat, office.lng], { icon: vmPinIcon('office') }).addTo(_vmContactMap).bindPopup(vmPopupHtml(office)).openPopup();
+  var icon = L.divIcon({ className: '', html: '<span class="vm-pin vm-pin--office"></span>', iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10] });
+  L.marker([VM_OFFICE.lat, VM_OFFICE.lng], { icon: icon }).addTo(_vmContactMap)
+    .bindPopup('<div class="vm-popup"><p class="vm-popup__tag">Our Office</p><h4>' + VM_OFFICE.title + '</h4><p class="vm-popup__sub">' + VM_OFFICE.sub + '</p></div>')
+    .openPopup();
   setTimeout(function() { _vmContactMap.invalidateSize(); }, 200);
 }
 window.addEventListener('resize', function() {
-  if (_vmListingsMap) _vmListingsMap.invalidateSize();
   if (_vmContactMap) _vmContactMap.invalidateSize();
 });
+</script>
+<script>
+/* ============ IDX Broker MLS search: brand theming + city/price/type filter bar ============
+   The widget (custom element <idx-prime-map-search>, injected by hydrateSiteConfig from a
+   script IDX Broker serves) reads most of its config once at mount time and doesn't react
+   to attribute changes afterward - confirmed by testing on the live widget. widgetstyle is
+   the one exception (it re-applies live), so it's set both in place on first mount and again
+   on every filtered rebuild. To actually change results, the element has to be torn down and
+   recreated with a fresh querystring attribute - the four params below (city[], lp, hp, pt)
+   match the field names IDX Broker's own hosted search form submits for this MLS. */
+var IDX_BRAND_STYLE = JSON.stringify({
+  '--idx-banners-color': '#1F4D2E',
+  '--idx-priceReduced-color': '#C7A14A',
+  '--idx-text-color': '#FFFFFF',
+  '--idx-favorite-color': '#C7A14A'
+});
+function idxFindWidgetEl() {
+  var host = document.getElementById('idx-search-widget');
+  return host ? host.querySelector('idx-prime-map-search') : null;
+}
+function idxShowLoading(show) {
+  var el = document.getElementById('idx-search-loading');
+  if (el) el.classList.toggle('is-hidden', !show);
+}
+function idxWaitReady(el, cb, maxMs) {
+  var start = Date.now();
+  (function poll() {
+    if (el.shadowRoot && el.shadowRoot.children.length > 0) return cb();
+    if (Date.now() - start > (maxMs || 10000)) return cb();
+    setTimeout(poll, 200);
+  })();
+}
+function applyIdxFilters(evt) {
+  if (evt) evt.preventDefault();
+  var current = idxFindWidgetEl();
+  if (!current) return false;
+  var city = document.getElementById('idx-f-city').value;
+  var price = document.getElementById('idx-f-price').value;
+  var type = document.getElementById('idx-f-type').value;
+  var parts = [];
+  if (city) parts.push('city[]=' + city);
+  if (price) {
+    var range = price.split('-');
+    if (range[0]) parts.push('lp=' + range[0]);
+    if (range[1]) parts.push('hp=' + range[1]);
+  }
+  if (type) parts.push('pt=' + type);
+  var clone = current.cloneNode(false);
+  clone.setAttribute('querystring', parts.join('&'));
+  clone.setAttribute('widgetstyle', IDX_BRAND_STYLE);
+  idxShowLoading(true);
+  current.parentNode.replaceChild(clone, current);
+  idxWaitReady(clone, function() { idxShowLoading(false); }, 12000);
+  return false;
+}
+/* Brand-theme the widget the first time IDX Broker's script mounts it, and hide the skeleton. */
+(function watchIdxInitialMount() {
+  var host = document.getElementById('idx-search-widget');
+  if (!host) return;
+  var done = false;
+  var obs = new MutationObserver(function() {
+    var el = idxFindWidgetEl();
+    if (!el || done) return;
+    done = true;
+    el.setAttribute('widgetstyle', IDX_BRAND_STYLE);
+    idxWaitReady(el, function() { idxShowLoading(false); }, 15000);
+    if (typeof initReveal === 'function') initReveal();
+    obs.disconnect();
+  });
+  obs.observe(host, { childList: true, subtree: true });
+  setTimeout(function() { idxShowLoading(false); }, 15000);
+})();
 </script>
 <script>
 /* View switching */
@@ -1793,7 +1895,6 @@ function go(view) {
   if (match) match.classList.add('on');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   setTimeout(initReveal, 100);
-  if (view === 'listings') setTimeout(initListingsMap, 150);
   if (view === 'contact') setTimeout(initContactMap, 150);
 }
 
