@@ -1818,6 +1818,33 @@ function handleForm(e) {
         });
         var idxSection = document.getElementById("idx-search-section");
         if (idxSection) idxSection.hidden = false;
+
+        // Bug fix: on IDX Broker's Prime Map Search widget, the property
+        // card's price/status/address block (.idx-property-card__details)
+        // sits at the same z-index as the full-card <a> link and comes
+        // later in the DOM, so it wins the paint order and swallows clicks
+        // over that whole area - only the photo (above it) and a thin strip
+        // below it were actually clickable. Confirmed by mapping click
+        // targets down the card before landing on this fix. The widget
+        // renders in an open shadow root, so a scoped <style> injected
+        // there fixes every current and future card without touching
+        // IDX Broker's own code. If IDX Broker ever renames these classes
+        // in a widget update, this silently stops matching - nothing else
+        // breaks, the old dead-click-zone bug would just come back.
+        (function fixIdxCardLinks() {
+          var host = document.getElementById("idx-search-widget");
+          if (!host) return;
+          var applied = false;
+          var obs = new MutationObserver(function () {
+            var el = host.querySelector("idx-prime-map-search");
+            if (!el || !el.shadowRoot || applied) return;
+            var style = document.createElement("style");
+            style.textContent = ".idx-property-card__details { pointer-events: none; }";
+            el.shadowRoot.appendChild(style);
+            applied = true;
+          });
+          obs.observe(host, { childList: true, subtree: true });
+        })();
       }
 
       // Browse-by-community dropdown + buttons under Listings, built from the
