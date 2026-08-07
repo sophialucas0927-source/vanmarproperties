@@ -400,51 +400,6 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 .map-ph { height: 260px; background: linear-gradient(135deg, var(--green-700), var(--green-900)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: center; padding: 20px; }
 
 /* =============================================
-   IDX MLS SEARCH (filter bar + live widget frame)
-============================================= */
-.idx-filter-bar {
-  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.25rem;
-  margin-top: 32px; padding: 28px 32px; background: var(--cream); border-top: 2px solid var(--gold-500); box-shadow: var(--shadow-sm);
-}
-.idx-filter-field { display: flex; flex-direction: column; gap: 0.45rem; flex: 1 1 200px; min-width: 180px; }
-.idx-filter-field label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
-.idx-filter-field select {
-  padding: 14px 16px; background: var(--white); border: 1px solid rgba(0,0,0,0.12);
-  font-family: var(--font-sans); font-size: 0.9rem; color: var(--ink);
-  transition: border-color var(--t), box-shadow var(--t); border-radius: 0;
-  -webkit-appearance: none; appearance: none; min-height: 50px;
-}
-.idx-filter-field select:focus { outline: none; border-color: var(--gold-500); box-shadow: 0 0 0 3px rgba(199,161,74,0.12); }
-.idx-filter-submit { flex: 0 0 auto; white-space: nowrap; }
-/* 560px, not taller: IDX Broker's widget hardcodes its map canvas and
-   results panel to 500px internally (inside its Shadow DOM, unreachable
-   from here) - a taller frame just adds dead space below it. Confirmed
-   by inspecting the live shadow tree before picking this value. */
-.idx-map-frame {
-  position: relative; width: 100%; height: 560px; margin-top: 3px;
-  border-top: 2px solid var(--gold-500); box-shadow: var(--shadow-sm); background: var(--cream);
-}
-#idx-search-widget { width: 100%; height: 100%; }
-.idx-loading {
-  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 14px; background: var(--cream); color: var(--stone); font-size: 0.8rem; letter-spacing: 0.05em;
-  transition: opacity 0.4s ease;
-}
-.idx-loading.is-hidden { opacity: 0; pointer-events: none; }
-.idx-loading__spinner {
-  width: 30px; height: 30px; border-radius: 50%; border: 2px solid rgba(199,161,74,0.25); border-top-color: var(--gold-500);
-  animation: idx-spin 0.9s linear infinite;
-}
-@keyframes idx-spin { to { transform: rotate(360deg); } }
-@media (max-width: 900px) {
-  .idx-filter-bar { padding: 22px 20px; }
-}
-@media (max-width: 540px) {
-  .idx-filter-field { flex-basis: 100%; }
-  .idx-filter-submit { width: 100%; }
-}
-
-/* =============================================
    ABOUT
 ============================================= */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -1073,62 +1028,12 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
     </div>
   </section>
   <!-- IDXBroker live MLS search: revealed + filled by hydrateSiteConfig when a widget snippet is set in admin Site Settings. -->
-  <section class="section" id="idx-search-section" hidden>
+  <section class="section" id="idx-search-section" hidden style="padding-bottom:0;">
     <div class="container">
       <span class="gold-label">Search the MLS</span>
       <h2 style="margin-top:6px;">Find every local listing.</h2>
       <div class="divider"></div>
-      <p style="max-width:640px;color:var(--stone);margin-top:1rem;">Every active listing in the Coachella Valley, updated live from the MLS. Filter by city, price, or property type to narrow the map.</p>
-
-      <form id="idx-filter-bar" class="idx-filter-bar reveal" onsubmit="return applyIdxFilters(event)">
-        <div class="idx-filter-field">
-          <label for="idx-f-city">City</label>
-          <select id="idx-f-city">
-            <option value="">All Cities</option>
-            <option value="35214">Palm Desert</option>
-            <option value="24819">La Quinta</option>
-            <option value="22551">Indian Wells</option>
-            <option value="38409">Rancho Mirage</option>
-            <option value="35217">Palm Springs</option>
-            <option value="22567">Indio</option>
-            <option value="3765">Bermuda Dunes</option>
-            <option value="7692">Cathedral City</option>
-            <option value="9392">Coachella</option>
-            <option value="12153">Desert Hot Springs</option>
-            <option value="46304">Thousand Palms</option>
-            <option value="46189">Thermal</option>
-          </select>
-        </div>
-        <div class="idx-filter-field">
-          <label for="idx-f-price">Price Range</label>
-          <select id="idx-f-price">
-            <option value="">Any Price</option>
-            <option value="0-500000">Under $500K</option>
-            <option value="500000-1000000">$500K to $1M</option>
-            <option value="1000000-3000000">$1M to $3M</option>
-            <option value="3000000-10000000">$3M to $10M</option>
-            <option value="10000000-">$10M+</option>
-          </select>
-        </div>
-        <div class="idx-filter-field">
-          <label for="idx-f-type">Property Type</label>
-          <select id="idx-f-type">
-            <option value="">All Types</option>
-            <option value="1">Residential</option>
-            <option value="5">Land</option>
-            <option value="6">Commercial</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn--gold idx-filter-submit">Search Listings</button>
-      </form>
-
-      <div class="idx-map-frame reveal">
-        <div id="idx-search-widget"></div>
-        <div id="idx-search-loading" class="idx-loading" aria-live="polite">
-          <div class="idx-loading__spinner" aria-hidden="true"></div>
-          <p>Loading live listings&hellip;</p>
-        </div>
-      </div>
+      <div id="idx-search-widget" style="margin-top:20px;"></div>
     </div>
   </section>
   <section class="section">
@@ -1770,78 +1675,6 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 <!-- ========================================
      JAVASCRIPT
 ======================================== -->
-<script>
-/* ============ IDX Broker MLS search: brand theming + city/price/type filter bar ============
-   The widget (custom element <idx-prime-map-search>, injected by hydrateSiteConfig from a
-   script IDX Broker serves) reads most of its config once at mount time and doesn't react
-   to attribute changes afterward - confirmed by testing on the live widget. widgetstyle is
-   the one exception (it re-applies live), so it's set both in place on first mount and again
-   on every filtered rebuild. To actually change results, the element has to be torn down and
-   recreated with a fresh querystring attribute - the four params below (city[], lp, hp, pt)
-   match the field names IDX Broker's own hosted search form submits for this MLS. */
-var IDX_BRAND_STYLE = JSON.stringify({
-  '--idx-banners-color': '#1F4D2E',
-  '--idx-priceReduced-color': '#C7A14A',
-  '--idx-text-color': '#FFFFFF',
-  '--idx-favorite-color': '#C7A14A'
-});
-function idxFindWidgetEl() {
-  var host = document.getElementById('idx-search-widget');
-  return host ? host.querySelector('idx-prime-map-search') : null;
-}
-function idxShowLoading(show) {
-  var el = document.getElementById('idx-search-loading');
-  if (el) el.classList.toggle('is-hidden', !show);
-}
-function idxWaitReady(el, cb, maxMs) {
-  var start = Date.now();
-  (function poll() {
-    if (el.shadowRoot && el.shadowRoot.children.length > 0) return cb();
-    if (Date.now() - start > (maxMs || 10000)) return cb();
-    setTimeout(poll, 200);
-  })();
-}
-function applyIdxFilters(evt) {
-  if (evt) evt.preventDefault();
-  var current = idxFindWidgetEl();
-  if (!current) return false;
-  var city = document.getElementById('idx-f-city').value;
-  var price = document.getElementById('idx-f-price').value;
-  var type = document.getElementById('idx-f-type').value;
-  var parts = [];
-  if (city) parts.push('city[]=' + city);
-  if (price) {
-    var range = price.split('-');
-    if (range[0]) parts.push('lp=' + range[0]);
-    if (range[1]) parts.push('hp=' + range[1]);
-  }
-  if (type) parts.push('pt=' + type);
-  var clone = current.cloneNode(false);
-  clone.setAttribute('querystring', parts.join('&'));
-  clone.setAttribute('widgetstyle', IDX_BRAND_STYLE);
-  idxShowLoading(true);
-  current.parentNode.replaceChild(clone, current);
-  idxWaitReady(clone, function() { idxShowLoading(false); }, 12000);
-  return false;
-}
-/* Brand-theme the widget the first time IDX Broker's script mounts it, and hide the skeleton. */
-(function watchIdxInitialMount() {
-  var host = document.getElementById('idx-search-widget');
-  if (!host) return;
-  var done = false;
-  var obs = new MutationObserver(function() {
-    var el = idxFindWidgetEl();
-    if (!el || done) return;
-    done = true;
-    el.setAttribute('widgetstyle', IDX_BRAND_STYLE);
-    idxWaitReady(el, function() { idxShowLoading(false); }, 15000);
-    if (typeof initReveal === 'function') initReveal();
-    obs.disconnect();
-  });
-  obs.observe(host, { childList: true, subtree: true });
-  setTimeout(function() { idxShowLoading(false); }, 15000);
-})();
-</script>
 <script>
 /* View switching */
 function go(view) {
