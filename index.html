@@ -1845,7 +1845,7 @@ function handleForm(e) {
           var host = document.getElementById("idx-search-widget");
           if (!host) return;
           var STYLE_ID = "vm-idx-card-fix";
-          var watchingShadow = false;
+          var watchedShadowRoot = null;
 
           function ensureStyle(shadowRoot) {
             if (shadowRoot.querySelector("#" + STYLE_ID)) return;
@@ -1855,18 +1855,31 @@ function handleForm(e) {
             shadowRoot.appendChild(style);
           }
 
-          var hostObs = new MutationObserver(function () {
+          function attachShadowWatcher(shadowRoot) {
+            if (shadowRoot === watchedShadowRoot) return;
+            watchedShadowRoot = shadowRoot;
+            ensureStyle(shadowRoot);
+            var shadowObs = new MutationObserver(function () { ensureStyle(shadowRoot); });
+            shadowObs.observe(shadowRoot, { childList: true, subtree: true });
+          }
+
+          // Polling, not a light-DOM MutationObserver, because the custom
+          // element attaches its shadow root asynchronously in its own
+          // connectedCallback - by the time a light-DOM mutation fires for
+          // the element's insertion, el.shadowRoot is still null, and
+          // nothing else ever mutates the light DOM afterward (everything
+          // from that point on happens inside the shadow tree, which a
+          // light-DOM observer's subtree:true can't see across the
+          // boundary). Confirmed live: the light-DOM observer fired
+          // exactly twice and then never again, missing the shadow root
+          // by a beat both times. Polling just checks until it's ready.
+          var pollCount = 0;
+          var poll = setInterval(function () {
+            pollCount++;
             var el = host.querySelector("idx-prime-map-search");
-            if (!el || !el.shadowRoot) return;
-            ensureStyle(el.shadowRoot);
-            if (watchingShadow) return;
-            watchingShadow = true;
-            var shadowObs = new MutationObserver(function () {
-              ensureStyle(el.shadowRoot);
-            });
-            shadowObs.observe(el.shadowRoot, { childList: true, subtree: true });
-          });
-          hostObs.observe(host, { childList: true, subtree: true });
+            if (el && el.shadowRoot) attachShadowWatcher(el.shadowRoot);
+            if (pollCount > 200) clearInterval(poll); // ~1 minute at 300ms, then give up
+          }, 300);
         })();
       }
 
