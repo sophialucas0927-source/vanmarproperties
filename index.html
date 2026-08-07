@@ -1828,22 +1828,45 @@ function handleForm(e) {
         // targets down the card before landing on this fix. The widget
         // renders in an open shadow root, so a scoped <style> injected
         // there fixes every current and future card without touching
-        // IDX Broker's own code. If IDX Broker ever renames these classes
-        // in a widget update, this silently stops matching - nothing else
+        // IDX Broker's own code.
+        //
+        // Self-healing on purpose: the widget is a Vue app that re-renders
+        // its shadow root's contents as it loads (skeleton -> results), and
+        // a plain one-time injection got wiped out by that re-render before
+        // it ever took effect (verified live - the style tag was gone a few
+        // seconds after being added). So this keeps a MutationObserver on
+        // the shadow root itself and re-adds the style every time something
+        // changes in there, not just once on first mount.
+        //
+        // If IDX Broker ever renames .idx-property-card__details in a
+        // widget update, this silently stops matching - nothing else
         // breaks, the old dead-click-zone bug would just come back.
         (function fixIdxCardLinks() {
           var host = document.getElementById("idx-search-widget");
           if (!host) return;
-          var applied = false;
-          var obs = new MutationObserver(function () {
-            var el = host.querySelector("idx-prime-map-search");
-            if (!el || !el.shadowRoot || applied) return;
+          var STYLE_ID = "vm-idx-card-fix";
+          var watchingShadow = false;
+
+          function ensureStyle(shadowRoot) {
+            if (shadowRoot.querySelector("#" + STYLE_ID)) return;
             var style = document.createElement("style");
+            style.id = STYLE_ID;
             style.textContent = ".idx-property-card__details { pointer-events: none; }";
-            el.shadowRoot.appendChild(style);
-            applied = true;
+            shadowRoot.appendChild(style);
+          }
+
+          var hostObs = new MutationObserver(function () {
+            var el = host.querySelector("idx-prime-map-search");
+            if (!el || !el.shadowRoot) return;
+            ensureStyle(el.shadowRoot);
+            if (watchingShadow) return;
+            watchingShadow = true;
+            var shadowObs = new MutationObserver(function () {
+              ensureStyle(el.shadowRoot);
+            });
+            shadowObs.observe(el.shadowRoot, { childList: true, subtree: true });
           });
-          obs.observe(host, { childList: true, subtree: true });
+          hostObs.observe(host, { childList: true, subtree: true });
         })();
       }
 
