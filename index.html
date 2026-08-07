@@ -1033,7 +1033,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <span class="gold-label">Search the MLS</span>
       <h2 style="margin-top:6px;">Find every local listing.</h2>
       <div class="divider"></div>
-      <div id="idx-search-widget" style="margin-top:20px;"></div>
+      <div id="idx-search-widget" style="margin-top:20px;padding:14px;box-sizing:border-box;min-height:560px;background:var(--white);border-top:3px solid var(--gold-500);box-shadow:var(--shadow-sm);"></div>
     </div>
   </section>
   <section class="section">
@@ -1819,47 +1819,56 @@ function handleForm(e) {
         var idxSection = document.getElementById("idx-search-section");
         if (idxSection) idxSection.hidden = false;
 
-        // Bug fix: on IDX Broker's Prime Map Search widget, the property
-        // card's price/status/address block (.idx-property-card__details)
-        // sits at the same z-index as the full-card <a> link and comes
-        // later in the DOM, so it wins the paint order and swallows clicks
-        // over that whole area - only the photo (above it) and a thin strip
-        // below it were actually clickable. Confirmed by mapping click
-        // targets down the card before landing on this fix. The widget
-        // renders in an open shadow root, so a scoped <style> injected
-        // there fixes every current and future card without touching
-        // IDX Broker's own code.
+        // Fixes + visual polish injected into the widget's open shadow
+        // root. Two things live in the same STYLES map below:
+        //  - vm-idx-card-fix: the price/status/address block
+        //    (.idx-property-card__details) sits at the same z-index as the
+        //    full-card <a> link but later in the DOM, so it wins the paint
+        //    order and swallows clicks over that whole area - only the
+        //    photo was actually clickable before this. Confirmed by
+        //    mapping click targets down the card before landing on it.
+        //  - vm-idx-card-trim: cosmetic only - a white frame + shadow
+        //    around each card's photo, plus a hover lift/zoom, since the
+        //    widget looked flat and static by default.
         //
         // Self-healing on purpose: the widget is a Vue app that re-renders
         // its shadow root's contents as it loads (skeleton -> results), and
         // a plain one-time injection got wiped out by that re-render before
-        // it ever took effect (verified live - the style tag was gone a few
-        // seconds after being added). So this keeps a MutationObserver on
-        // the shadow root itself and re-adds the style every time something
-        // changes in there, not just once on first mount.
+        // it ever took effect. So this keeps a MutationObserver on the
+        // shadow root itself and re-adds anything missing on every change.
         //
-        // If IDX Broker ever renames .idx-property-card__details in a
-        // widget update, this silently stops matching - nothing else
-        // breaks, the old dead-click-zone bug would just come back.
-        (function fixIdxCardLinks() {
+        // If IDX Broker ever renames these classes in a widget update,
+        // this silently stops matching - nothing else breaks, it just
+        // reverts to the old flat/dead-click-zone look.
+        (function polishIdxWidget() {
           var host = document.getElementById("idx-search-widget");
           if (!host) return;
-          var STYLE_ID = "vm-idx-card-fix";
+
+          var STYLES = {
+            "vm-idx-card-fix": ".idx-property-card__details { pointer-events: none; }",
+            "vm-idx-card-trim":
+              ".idx-property-card__wrap { border: 3px solid #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.18); box-sizing: border-box; transition: transform 0.3s ease, box-shadow 0.3s ease; }" +
+              ".idx-property-card__wrap:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.28); }" +
+              ".idx-property-card__image--wrap img { transition: transform 0.6s ease; }" +
+              ".idx-property-card__wrap:hover .idx-property-card__image--wrap img { transform: translate3d(-50%,-50%,0) scale(1.08); }"
+          };
           var watchedShadowRoot = null;
 
-          function ensureStyle(shadowRoot) {
-            if (shadowRoot.querySelector("#" + STYLE_ID)) return;
-            var style = document.createElement("style");
-            style.id = STYLE_ID;
-            style.textContent = ".idx-property-card__details { pointer-events: none; }";
-            shadowRoot.appendChild(style);
+          function ensureStyles(shadowRoot) {
+            Object.keys(STYLES).forEach(function (id) {
+              if (shadowRoot.querySelector("#" + id)) return;
+              var style = document.createElement("style");
+              style.id = id;
+              style.textContent = STYLES[id];
+              shadowRoot.appendChild(style);
+            });
           }
 
           function attachShadowWatcher(shadowRoot) {
             if (shadowRoot === watchedShadowRoot) return;
             watchedShadowRoot = shadowRoot;
-            ensureStyle(shadowRoot);
-            var shadowObs = new MutationObserver(function () { ensureStyle(shadowRoot); });
+            ensureStyles(shadowRoot);
+            var shadowObs = new MutationObserver(function () { ensureStyles(shadowRoot); });
             shadowObs.observe(shadowRoot, { childList: true, subtree: true });
           }
 
@@ -1870,9 +1879,9 @@ function handleForm(e) {
           // nothing else ever mutates the light DOM afterward (everything
           // from that point on happens inside the shadow tree, which a
           // light-DOM observer's subtree:true can't see across the
-          // boundary). Confirmed live: the light-DOM observer fired
-          // exactly twice and then never again, missing the shadow root
-          // by a beat both times. Polling just checks until it's ready.
+          // boundary). Confirmed live: a light-DOM observer fired exactly
+          // twice and then never again, missing the shadow root by a beat
+          // both times. Polling just checks until it's ready.
           var pollCount = 0;
           var poll = setInterval(function () {
             pollCount++;
@@ -1880,6 +1889,26 @@ function handleForm(e) {
             if (el && el.shadowRoot) attachShadowWatcher(el.shadowRoot);
             if (pollCount > 200) clearInterval(poll); // ~1 minute at 300ms, then give up
           }, 300);
+
+          // Brand theming: banners/favorite colors -> VanMar gold/green
+          // instead of IDX Broker's default blue-gray/red. This attribute
+          // IS reactive (unlike querystring/mapzoom/mapcenter, which are
+          // read once at mount), so a simple watch-for-element check is
+          // enough - no need for the shadow-root polling used above.
+          var themed = false;
+          var themeObs = new MutationObserver(function () {
+            if (themed) return;
+            var el = host.querySelector("idx-prime-map-search");
+            if (!el) return;
+            themed = true;
+            el.setAttribute("widgetstyle", JSON.stringify({
+              "--idx-banners-color": "#1F4D2E",
+              "--idx-priceReduced-color": "#C7A14A",
+              "--idx-text-color": "#FFFFFF",
+              "--idx-favorite-color": "#C7A14A"
+            }));
+          });
+          themeObs.observe(host, { childList: true, subtree: true });
         })();
       }
 
