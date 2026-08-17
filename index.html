@@ -1951,5 +1951,29 @@ function handleForm(e) {
     .catch(function () {});
 })();
 </script>
+<script>
+/* Google Ads click conversion for the Book a Consultation / Book a Free
+   Consultation / Book a Land Consultation / Talk to a Local Expert links —
+   they all point out to cal.com/cmtz41/free-consultation. This is a CLICK
+   conversion (leaving the site to book), not a confirmed-booking conversion,
+   since cal.com is a third-party page we don't control. Fires once per page
+   load per link so a double-click doesn't double count.
+   To activate: create a Google Ads conversion action, paste the label
+   (the part after the slash in "AW-18354035380/AbCdEfGh12_IJklmn") into
+   CONSULTATION_CONVERSION_LABEL below. Leaving it empty is safe — the named
+   "book_consultation" event still fires for anyone using Google tag events
+   instead of a labeled conversion action. */
+var CONSULTATION_CONVERSION_LABEL = "";
+var consultationClickFired = false;
+document.addEventListener("click", function (e) {
+  var link = e.target.closest('a[href*="cal.com/cmtz41/free-consultation"]');
+  if (!link || typeof gtag !== "function") return;
+  gtag("event", "book_consultation", { event_category: "engagement" });
+  if (!consultationClickFired && CONSULTATION_CONVERSION_LABEL) {
+    consultationClickFired = true;
+    gtag("event", "conversion", { send_to: "AW-18354035380/" + CONSULTATION_CONVERSION_LABEL });
+  }
+});
+</script>
 </body>
 </html>
