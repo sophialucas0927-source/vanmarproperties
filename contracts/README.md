@@ -1,8 +1,9 @@
 # DTC Website Services Agreement — DRAFT
 
 `DTC-Website-Services-Agreement.docx` is a draft services agreement between
-**Mission Hub Inc.** and **Dominate Through Christ** (DTC, dthroughc.org)
-covering:
+**Mission Hub Ink** (77824 Wildcat Dr., Palm Desert, CA 92211) and
+**Dominate Through Christ** (DTC, dthroughc.org), effective September 11,
+2026, covering:
 
 - One-time website development fee: **$500 total, 100% due upfront**
 - Recurring maintenance fee: **$250/month**, cancellable by the client at
@@ -10,16 +11,19 @@ covering:
 
 ## Before this is signed
 
-This is a **template, not legal advice**. The following must be confirmed
-or filled in (highlighted in yellow in the document) before execution:
+This is a **template, not legal advice**. The following are still open
+(highlighted in yellow in the document) before execution:
 
-- Mission Hub Inc.'s state of formation and business address
-- DTC's exact legal status (registered nonprofit, fiscal sponsorship, or
-  unincorporated ministry) and address
-- Governing state law / venue (the draft leaves this open; DTC's own
-  published website Terms already specify California)
+- Mission Hub Ink's entity type (corporation, LLC, sole proprietorship, etc.)
+- DTC's principal address
 - Payment method for the fees
-- Effective date and signatory names/titles
+- Signatory names/titles for both parties
+
+Resolved so far: DTC's 501(c)(3) application is pending (not yet granted) —
+the agreement discloses this and puts the responsibility for any
+tax-deductibility representations to donors on DTC. Governing law is set to
+California, venue Riverside County (matching Mission Hub Ink's address and
+DTC's own published site Terms).
 
 Given that DTC is a charitable initiative that publishes content about
 minors (sponsored student athletes) and is donation-adjacent (even though
